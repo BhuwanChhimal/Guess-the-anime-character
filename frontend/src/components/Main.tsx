@@ -1,21 +1,116 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
-const Main = () => {
-  const [guess, setGuess] = useState('');
+interface Character {
+  mal_id: number;
+  name: string;
+  anime: string;
+}
 
-  const handleSubmit = (e: React.FormEvent) => {
+interface CorrectCharacter {
+  id: number;
+  name: string;
+  animeName: string;
+  gender: string;
+  hairColor: string;
+  powerType: string;
+  weaponType: string;
+  role: string;
+  species: string;
+}
+
+interface Feedback {
+  animeName: boolean;
+  gender: boolean;
+  hairColor: boolean;
+  powerType: boolean;
+  weaponType: boolean;
+  role: boolean;
+  species: boolean;
+}
+
+axios.defaults.baseURL = 'http://localhost:5002';
+
+const Main: React.FC = () => {
+  const [guess, setGuess] = useState<string>('');
+  const [correctCharacter, setCorrectCharacter] = useState<CorrectCharacter | null>(null);
+  const [matchingCharacters, setMatchingCharacters] = useState<Character[]>([]);
+  const [showDropdown, setShowDropdown] = useState<boolean>(false);
+  const [feedback, setFeedback] = useState<Feedback | null>(null);
+
+  const handleStartPlay = async (): Promise<void> => {
+    try {
+      const res = await axios.get<CorrectCharacter>('/api/characters/random');
+      // Transform the response data to match the CorrectCharacter interface
+      const transformedCharacter: CorrectCharacter = {
+        id: res.data.id,
+        name: res.data.name,
+        animeName: res.data.animeName || 'Unknown',
+        gender: res.data.gender || 'Unknown',
+        hairColor: res.data.hairColor || 'Unknown',
+        powerType: res.data.powerType || 'Unknown',
+        weaponType: res.data.weaponType || 'Unknown',
+        role: res.data.role || 'Unknown',
+        species: res.data.species || 'Unknown'
+      };
+      setCorrectCharacter(transformedCharacter);
+      setFeedback(null);
+      console.log('Fetched character:', transformedCharacter);
+    } catch (error) {
+      console.error('Failed to fetch random character:', error);
+    }
+  };
+
+
+  const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
+    const value = e.target.value;
+    setGuess(value);
+
+    if (value.trim() === '') {
+      setMatchingCharacters([]);
+      setShowDropdown(false);
+      return;
+    }
+
+    try {
+      const res = await axios.get<Character[]>(`/api/characters/search?name=${value}`);
+      setMatchingCharacters(res.data);
+      setShowDropdown(true);
+    } catch (error) {
+      console.error('Failed to search characters:', error);
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
-    // Handle guess submission logic here
-    setGuess('');
+
+    if (!correctCharacter) {
+      alert('Please start the game by clicking "Play" first.');
+      return;
+    }
+
+    try {
+      const res = await axios.post<{ feedback: Feedback }>('/api/characters/guess', {
+        guessedCharacterId: guess,
+        correctCharacter,
+      });
+      setFeedback(res.data.feedback);
+    } catch (error) {
+      console.error('Failed to check guess:', error);
+    }
+  };
+
+  const handleCharacterSelect = (character: Character): void => {
+    setGuess(character.name);
+    setMatchingCharacters([]);
+    setShowDropdown(false);
   };
 
   return (
     <div className="w-full h-[45rem] max-w-4xl bg-[#d9d9d9] rounded-lg p-8 shadow-2xl font-audiowide">
       {/* Title Section */}
       <div className="bg-black text-white py-4 rounded-2xl mb-6">
-        <h1 className="text-center text-xl ">
-          GUESS THE ANIME CHARACTER
-        </h1>
+        <h1 className="text-center text-xl">GUESS THE ANIME CHARACTER</h1>
       </div>
 
       {/* Instructions */}
@@ -27,28 +122,46 @@ const Main = () => {
 
       {/* Play Button */}
       <div className="flex justify-center mb-8">
-        <button className="bg-white px-8 py-2 rounded-md shadow-md hover:shadow-lg transition-shadow">
+        <button
+          className="bg-white px-8 py-2 rounded-md shadow-md hover:shadow-lg transition-shadow"
+          onClick={handleStartPlay}
+        >
           Play
         </button>
       </div>
 
       {/* Guess Input Section */}
       <div className="mb-8">
-        <p className=" mb-2">Enter your guess:</p>
-        <form onSubmit={handleSubmit} className="flex gap-4">
+        <p className="mb-2">Enter your guess:</p>
+        <form onSubmit={handleSubmit} className="flex gap-4 relative">
           <input
             type="text"
             value={guess}
-            onChange={(e) => setGuess(e.target.value)}
+            onChange={handleInputChange}
             placeholder="Enter any anime character..."
             className="flex-1 outline-0 px-4 py-2 rounded-md bg-white text-sm"
           />
           <button
             type="submit"
-            className="bg-white px-6 py-2 rounded-md shadow-md hover:shadow-lg transition-shadow "
+            className="bg-white px-6 py-2 rounded-md shadow-md hover:shadow-lg transition-shadow"
           >
             Enter
           </button>
+
+          {/* Dropdown for matching characters */}
+          {showDropdown && matchingCharacters.length > 0 && (
+            <div className="absolute top-12 left-0 w-full bg-white rounded-md shadow-lg z-10">
+              {matchingCharacters.map((character) => (
+                <div
+                  key={character.mal_id}
+                  onClick={() => handleCharacterSelect(character)}
+                  className="p-2 hover:bg-gray-100 cursor-pointer"
+                >
+                  {character.name} ({character.anime})
+                </div>
+              ))}
+            </div>
+          )}
         </form>
       </div>
 
@@ -65,6 +178,19 @@ const Main = () => {
             <div className="p-3">Role</div>
             <div className="p-3">Species</div>
           </div>
+
+          {/* Display feedback */}
+          {feedback && (
+            <div className="grid grid-cols-7 divide-x divide-gray-200 text-center text-sm">
+              <div className="p-3">{feedback.animeName ? '✅' : '❌'}</div>
+              <div className="p-3">{feedback.gender ? '✅' : '❌'}</div>
+              <div className="p-3">{feedback.hairColor ? '✅' : '❌'}</div>
+              <div className="p-3">{feedback.powerType ? '✅' : '❌'}</div>
+              <div className="p-3">{feedback.weaponType ? '✅' : '❌'}</div>
+              <div className="p-3">{feedback.role ? '✅' : '❌'}</div>
+              <div className="p-3">{feedback.species ? '✅' : '❌'}</div>
+            </div>
+          )}
         </div>
       </div>
     </div>
