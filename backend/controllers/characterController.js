@@ -1,82 +1,80 @@
 const axios = require('axios');
+// const path= require('path');
 
+const {characterDetails} = require('../services/utils')
 const getRandomCharacter = async (req, res) => {
   try {
-    const randomId = Math.floor(Math.random() * 1000) + 1;
-    const response = await axios.get(`https://api.jikan.moe/v4/characters/${randomId}/full`);
-    const characterData = response.data.data;
+    // Get random index from the characterDetails array
+    const randomIndex = Math.floor(Math.random() * characterDetails.length);
+    const character = characterDetails[randomIndex];
     
-    // Transform the API response to match frontend expectations
-    const character = {
-      id: characterData.mal_id,
-      name: characterData.name,
-      animeName: characterData.anime?.[0]?.anime?.title || 'Unknown',
-      gender: characterData.gender || 'Unknown',
-      hairColor: characterData.hair_color || 'Unknown',
-      powerType: 'Unknown', // These fields aren't available in Jikan API
-      weaponType: 'Unknown', // You might need to maintain your own database
-      role: 'Unknown',      // for these additional character attributes
-      species: 'Unknown'
-    };
-    
-    res.json(character);
+    // Return the character in the same format as before
+    res.json({
+      id: character.id,
+      name: character.character_name,
+      animeName: character.anime_name || 'Unknown',
+      hairColor: character.hair_color || 'Unknown',
+      powerType: character.power_type || 'Unknown',
+      weaponType: character.weapon_type || 'Unknown',
+      role: character.role || 'Unknown',
+    });
   } catch (error) {
-    console.error('Error fetching random character:', error);
-    res.status(500).json({ error: 'Failed to fetch character' });
+    console.error('Error getting random character:', error);
+    res.status(500).json({ error: 'Failed to get character' });
   }
 };
 
 const searchCharacter = async (req, res) => {
-  const { name } = req.query;
-
   try {
-    const response = await axios.get(`https://api.jikan.moe/v4/characters?q=${name}`);
-    const characters = response.data.data.map(char => ({
-      mal_id: char.mal_id,
-      name: char.name,
-      anime: char.anime?.[0]?.anime?.title || 'Unknown'
-    }));
-
-    if (characters.length === 0) {
-      return res.status(404).json({ error: 'Character not found' });
+    const searchTerm = req.query.name?.toLowerCase();
+    
+    // Search through characterDetails array
+    const matchingCharacters = characterDetails.filter(character => 
+      character.character_name?.toLowerCase().includes(searchTerm)
+    );
+    
+    if (matchingCharacters.length === 0) {
+      return res.status(404).json({ error: 'No characters found' });
     }
-
-    res.json(characters);
+    
+    // Return all matching characters with consistent format
+    const formattedCharacters = matchingCharacters.map(character => ({
+      id: character.id,
+      name: character.character_name,
+      animeName: character.anime_name || 'Unknown',
+      hairColor: character.hair_color || 'Unknown',
+      powerType: character.power_type || 'Unknown',
+      weaponType: character.weapon_type || 'Unknown',
+      role: character.role || 'Unknown',
+    }));
+    
+    res.json(formattedCharacters);
   } catch (error) {
-    console.error("Error searching the character", error);
-    res.status(500).json({ error: 'Failed to search character' });
+    console.error('Error searching characters:', error);
+    res.status(500).json({ error: 'Failed to search characters' });
   }
 };
 
 const checkGuess = async (req, res) => {
-  const { guessedCharacterId, correctCharacter } = req.body;
+  const { guessedCharacterName, correctCharacter } = req.body;
 
   try {
-    const response = await axios.get(`https://api.jikan.moe/v4/characters/${guessedCharacterId}/full`);
-    const guessedCharacterData = response.data.data;
+    // Find the guessed character from local dataset by name
+    const guessedCharacter = characterDetails.find(
+      character => character.name?.toLowerCase() === guessedCharacterName.toLowerCase()
+    );
 
-    // Transform the guessed character data to match the format
-    const guessedCharacter = {
-      id: guessedCharacterData.mal_id,
-      name: guessedCharacterData.name,
-      animeName: guessedCharacterData.anime?.[0]?.anime?.title || 'Unknown',
-      gender: guessedCharacterData.gender || 'Unknown',
-      hairColor: guessedCharacterData.hair_color || 'Unknown',
-      powerType: 'Unknown',
-      weaponType: 'Unknown',
-      role: 'Unknown',
-      species: 'Unknown'
-    };
+    if (!guessedCharacter) {
+      return res.status(404).json({ error: 'Guessed character not found' });
+    }
 
     // Compare attributes
     const feedback = {
-      animeName: correctCharacter.animeName === guessedCharacter.animeName,
-      gender: correctCharacter.gender === guessedCharacter.gender,
-      hairColor: correctCharacter.hairColor === guessedCharacter.hairColor,
-      powerType: correctCharacter.powerType === guessedCharacter.powerType,
-      weaponType: correctCharacter.weaponType === guessedCharacter.weaponType,
-      role: correctCharacter.role === guessedCharacter.role,
-      species: correctCharacter.species === guessedCharacter.species
+      animeName: correctCharacter.animeName === guessedCharacter.anime_name,
+      hairColor: correctCharacter.hairColor === guessedCharacter.hair_color,
+      powerType: correctCharacter.powerType === guessedCharacter.power_type,
+      weaponType: correctCharacter.weaponType === guessedCharacter.weapon_type,
+      role: correctCharacter.role === guessedCharacter.role
     };
 
     res.json({ feedback, guessedCharacter });
@@ -86,4 +84,50 @@ const checkGuess = async (req, res) => {
   }
 };
 
-module.exports = { getRandomCharacter, searchCharacter, checkGuess };
+const fetchCharacterImage = async (characterName) => {
+  try {
+    // Search for the character by name
+    const response = await axios.get(`https://api.jikan.moe/v4/characters?q=${characterName}`);
+    const characters = response.data.data;
+
+    if (characters.length > 0) {
+      // Return the image URL of the first matching character
+      return characters[0].images.jpg.image_url;
+    } else {
+      return null; // No character found
+    }
+  } catch (error) {
+    console.error('Error fetching character image:', error);
+    throw new Error('Failed to fetch character image');
+  }
+};
+
+
+const updateCharactersWithImages = async () => {
+  const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+  const updatedCharacters = [];
+
+  for (const character of characterDetails) {
+    try {
+      await delay(1000); // Rate limiting
+      const imageUrl = await fetchCharacterImage(character.character_name);
+      updatedCharacters.push({
+        ...character,
+        image_url: imageUrl || null
+      });
+      console.log(`Updated ${character.character_name} with image`);
+    } catch (error) {
+      console.error(`Failed to update ${character.character_name}:`, error);
+      updatedCharacters.push({
+        ...character,
+        image_url: null
+      });
+    }
+  }
+
+  return updatedCharacters;
+};
+
+
+
+module.exports = { getRandomCharacter, searchCharacter, checkGuess , fetchCharacterImage, updateCharactersWithImages};
