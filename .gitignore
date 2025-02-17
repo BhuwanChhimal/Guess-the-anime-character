@@ -53,3 +53,5 @@ frontend/.env.test.local
 # OS Files
 .DS_Store
 Thumbs.db
+
+.qodo
