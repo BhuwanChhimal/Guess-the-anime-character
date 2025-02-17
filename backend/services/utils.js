@@ -345,14 +345,6 @@ module.exports = {
       role: "Supporting",
     },
     {
-      character_name: "Kaneki Ken",
-      anime_name: "Tokyo Ghoul",
-      hair_color: "White",
-      power_type: "Ghoul Abilities",
-      weapon_type: "Kagune",
-      role: "Protagonist",
-    },
-    {
       character_name: "Touka Kirishima",
       anime_name: "Tokyo Ghoul",
       hair_color: "Blue",
@@ -639,14 +631,6 @@ module.exports = {
       power_type: "Immortality",
       weapon_type: "Geass",
       role: "Supporting",
-    },
-    {
-      character_name: "Kaneki Ken",
-      anime_name: "Tokyo Ghoul",
-      hair_color: "White",
-      power_type: "Ghoul Abilities",
-      weapon_type: "Kagune",
-      role: "Protagonist",
     },
     {
       character_name: "Touka Kirishima",

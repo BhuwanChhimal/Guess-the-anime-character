@@ -61,7 +61,7 @@ const checkGuess = async (req, res) => {
   try {
     // Find the guessed character from local dataset by name
     const guessedCharacter = characterDetails.find(
-      character => character.name?.toLowerCase() === guessedCharacterName.toLowerCase()
+      character => character.character_name?.toLowerCase() === guessedCharacterName?.toLowerCase()
     );
 
     if (!guessedCharacter) {
@@ -70,14 +70,16 @@ const checkGuess = async (req, res) => {
 
     // Compare attributes
     const feedback = {
-      animeName: correctCharacter.animeName === guessedCharacter.anime_name,
-      hairColor: correctCharacter.hairColor === guessedCharacter.hair_color,
-      powerType: correctCharacter.powerType === guessedCharacter.power_type,
-      weaponType: correctCharacter.weaponType === guessedCharacter.weapon_type,
-      role: correctCharacter.role === guessedCharacter.role
+      animeName: correctCharacter.animeName?.toLowerCase() === guessedCharacter.anime_name?.toLowerCase(),
+      gender: correctCharacter.gender?.toLowerCase() === guessedCharacter.gender?.toLowerCase(),
+      hairColor: correctCharacter.hairColor?.toLowerCase() === guessedCharacter.hair_color?.toLowerCase(),
+      powerType: correctCharacter.powerType?.toLowerCase() === guessedCharacter.power_type?.toLowerCase(),
+      weaponType: correctCharacter.weaponType?.toLowerCase() === guessedCharacter.weapon_type?.toLowerCase(),
+      role: correctCharacter.role?.toLowerCase() === guessedCharacter.role?.toLowerCase(),
+      species: correctCharacter.species?.toLowerCase() === guessedCharacter.species?.toLowerCase()
     };
 
-    res.json({ feedback, guessedCharacter });
+    res.json({ feedback });
   } catch (error) {
     console.error('Error checking guess:', error);
     res.status(500).json({ error: 'Failed to check guess' });
@@ -105,23 +107,29 @@ const fetchCharacterImage = async (characterName) => {
 
 const updateCharactersWithImages = async () => {
   const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-  const updatedCharacters = [];
-
-  for (const character of characterDetails) {
+  const updatedCharacters = [...characterDetails]; // Create a copy of existing data
+  
+  // Filter for characters without images
+  const charactersNeedingUpdate = characterDetails.filter(char => !char.image_url);
+  
+  for (const character of charactersNeedingUpdate) {
     try {
       await delay(1000); // Rate limiting
       const imageUrl = await fetchCharacterImage(character.character_name);
-      updatedCharacters.push({
-        ...character,
-        image_url: imageUrl || null
-      });
+      
+      // Find and update only this character in our copy
+      const index = updatedCharacters.findIndex(
+        char => char.character_name === character.character_name
+      );
+      if (index !== -1) {
+        updatedCharacters[index] = {
+          ...updatedCharacters[index],
+          image_url: imageUrl || null
+        };
+      }
       console.log(`Updated ${character.character_name} with image`);
     } catch (error) {
       console.error(`Failed to update ${character.character_name}:`, error);
-      updatedCharacters.push({
-        ...character,
-        image_url: null
-      });
     }
   }
 
