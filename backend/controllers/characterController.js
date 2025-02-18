@@ -71,12 +71,12 @@ const checkGuess = async (req, res) => {
     // Compare attributes
     const feedback = {
       animeName: correctCharacter.animeName?.toLowerCase() === guessedCharacter.anime_name?.toLowerCase(),
-      gender: correctCharacter.gender?.toLowerCase() === guessedCharacter.gender?.toLowerCase(),
+      // gender: correctCharacter.gender?.toLowerCase() === guessedCharacter.gender?.toLowerCase(),
       hairColor: correctCharacter.hairColor?.toLowerCase() === guessedCharacter.hair_color?.toLowerCase(),
       powerType: correctCharacter.powerType?.toLowerCase() === guessedCharacter.power_type?.toLowerCase(),
       weaponType: correctCharacter.weaponType?.toLowerCase() === guessedCharacter.weapon_type?.toLowerCase(),
       role: correctCharacter.role?.toLowerCase() === guessedCharacter.role?.toLowerCase(),
-      species: correctCharacter.species?.toLowerCase() === guessedCharacter.species?.toLowerCase()
+      // species: correctCharacter.species?.toLowerCase() === guessedCharacter.species?.toLowerCase()
     };
 
     res.json({ feedback });

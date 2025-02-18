@@ -1,62 +1,86 @@
+import React from "react";
 
 interface CharacterCardProps {
-  animeName?: string;
-  gender?: string;
-  hairColor?: string;
-  powerType?: string;
-  weaponType?: string;
-  role?: string;
-  species?: string;
-  imageUrl?: string;
+  feedback: {
+    animeName: boolean;
+    hairColor: boolean;
+    powerType: boolean;
+    weaponType: boolean;
+    role: boolean;
+  } | null;
+  correctCharacter: {
+    animeName: string;
+    hairColor: string;
+    powerType: string;
+    weaponType: string;
+    role: string;
+  } | null;
 }
 
-const CharacterCard = ({
-  animeName = '??',
-  gender = '??',
-  hairColor = '??',
-  powerType = '??',
-  weaponType = '??',
-  role = '??',
-  species = '??',
-  imageUrl = '/api/placeholder/200/200'
-}: CharacterCardProps) => {
+const InfoRow = ({ label, value, isRevealed }: { label: string; value: string; isRevealed: boolean }) => (
+  <div className="flex justify-between items-center py-1 border-b border-purple-700 border-opacity-30">
+    <span className="text-purple-200">{label}:</span>
+    <span className={`text-white font-medium ${isRevealed ? 'text-green-400' : ''}`}>
+      {isRevealed ? value : '??'}
+    </span>
+  </div>
+);
+
+const CharacterCard: React.FC<CharacterCardProps> = ({
+  feedback,
+  correctCharacter
+}) => {
   return (
-    <div className="w-full max-w-sm h-[30rem] bg-[#a4a4a4] rounded-lg overflow-hidden shadow-lg font-audiowide">
+    <div className="w-full max-w-sm h-auto bg-gray-800 rounded-lg overflow-hidden shadow-xl border border-purple-600 font-audiowide transition-all hover:shadow-purple-500/20 transform">
       {/* Header */}
-      <div className=" p-2 text-center">
-        <h2 className="text-white mt-2">The character is...</h2>
+      <div className="bg-purple-900 p-2 sm:p-3 text-center">
+        <h2 className="text-white font-bold relative">
+          <span className="absolute inset-0 flex items-center justify-center blur-sm text-purple-300">The character is...</span>
+          <span className="relative">The character is...</span>
+        </h2>
       </div>
 
       {/* Character Image */}
-      <div className="p-4 flex justify-center">
-        <div className="w-36 h-36 bg-[#d9d9d9] rounded-full overflow-hidden">
+      <div className="p-4 sm:p-6 flex justify-center">
+        <div className="w-32 h-32 sm:w-40 sm:h-40 bg-gray-700 rounded-full overflow-hidden border-4 border-purple-500 shadow-lg shadow-purple-500/40 transition-all">
           <img
-            src={imageUrl}
+            src={correctCharacter?.imageUrl || '/api/placeholder/200/200'}
             alt="guess-img"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-80"
           />
         </div>
       </div>
 
       {/* Character Info */}
-      <div className="p-4 space-y-2 my-4 text-white text-sm">
-        <InfoRow label="Anime Name" value={animeName} />
-        <InfoRow label="Gender" value={gender} />
-        <InfoRow label="Hair Color" value={hairColor} />
-        <InfoRow label="Power Type" value={powerType} />
-        <InfoRow label="Weapon Type" value={weaponType} />
-        <InfoRow label="Role" value={role} />
-        <InfoRow label="Species" value={species} />
+      <div className="p-3 sm:p-5 space-y-2 bg-gray-900 mx-3 sm:mx-4 rounded-lg mb-4 sm:mb-5 shadow-inner">
+        <InfoRow 
+          label="Anime Name" 
+          value={correctCharacter?.animeName || '??'}
+          isRevealed={feedback?.animeName || false}
+        />
+        <InfoRow 
+          label="Hair Color" 
+          value={correctCharacter?.hairColor || '??'}
+          isRevealed={feedback?.hairColor || false}
+        />
+        <InfoRow 
+          label="Power Type" 
+          value={correctCharacter?.powerType || '??'}
+          isRevealed={feedback?.powerType || false}
+        />
+        <InfoRow 
+          label="Weapon Type" 
+          value={correctCharacter?.weaponType || '??'}
+          isRevealed={feedback?.weaponType || false}
+        />
+        <InfoRow 
+          label="Role" 
+          value={correctCharacter?.role || '??'}
+          isRevealed={feedback?.role || false}
+        />
       </div>
     </div>
   );
 };
-
-const InfoRow = ({ label, value }: { label: string; value: string }) => (
-  <div className="flex justify-between">
-    <span className="text-white">{label}:</span>
-    <span className="text-white">{value}</span>
-  </div>
-);
 
 export default CharacterCard;
