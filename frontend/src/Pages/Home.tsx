@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Main from "../components/Main";
 import CharacterCard from "../components/CharacterCard";
 import { Feedback, CharacterInfo } from "../types";
@@ -7,10 +7,20 @@ const Home = () => {
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [correctCharacter, setCorrectCharacter] = useState<CharacterInfo | null>(null);
 
-  const handleFeedbackUpdate = (newFeedback: Feedback, character: CharacterInfo) => {
-    setFeedback(newFeedback);
-    setCorrectCharacter(character);
+  const handleFeedbackUpdate = (newFeedback: Feedback | null, character: CharacterInfo) => {
+
+    
+    if (character) {
+     
+      setCorrectCharacter(character);
+    }
+    
+    if (newFeedback !== undefined) {
+    
+      setFeedback(newFeedback);
+    }
   };
+
 
   return (
     <div className="bg-gradient-to-b from-gray-900 to-purple-900 min-h-screen">
@@ -28,6 +38,7 @@ const Home = () => {
         </div>
       </div>
     </div>
+    
   )
 }
 

@@ -4,14 +4,13 @@ const axios = require('axios');
 const {characterDetails} = require('../services/utils')
 const getRandomCharacter = async (req, res) => {
   try {
-    // Get random index from the characterDetails array
     const randomIndex = Math.floor(Math.random() * characterDetails.length);
     const character = characterDetails[randomIndex];
     
-    // Return the character in the same format as before
+    // Add the character_name to the response
     res.json({
       id: character.id,
-      name: character.character_name,
+      name: character.character_name, // Make sure this is included
       animeName: character.anime_name || 'Unknown',
       hairColor: character.hair_color || 'Unknown',
       powerType: character.power_type || 'Unknown',
@@ -86,24 +85,28 @@ const checkGuess = async (req, res) => {
   }
 };
 
-const fetchCharacterImage = async (characterName) => {
+const fetchCharacterImage = async (req, res) => {
   try {
-    // Search for the character by name
-    const response = await axios.get(`https://api.jikan.moe/v4/characters?q=${characterName}`);
+    const characterName = req.params.name;
+    console.log('Fetching image for character:', characterName); // Debug log
+
+    const response = await axios.get(`https://api.jikan.moe/v4/characters?q=${encodeURIComponent(characterName)}`);
     const characters = response.data.data;
 
+    console.log('API Response:', characters.length ? 'Found' : 'Not found'); // Debug log
+
     if (characters.length > 0) {
-      // Return the image URL of the first matching character
-      return characters[0].images.jpg.image_url;
+      const imageUrl = characters[0].images.jpg.image_url;
+      console.log('Found image URL:', imageUrl); // Debug log
+      res.json({ imageUrl });
     } else {
-      return null; // No character found
+      res.status(404).json({ error: 'Character image not found' });
     }
   } catch (error) {
     console.error('Error fetching character image:', error);
-    throw new Error('Failed to fetch character image');
+    res.status(500).json({ error: 'Failed to fetch character image' });
   }
 };
-
 
 const updateCharactersWithImages = async () => {
   const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));

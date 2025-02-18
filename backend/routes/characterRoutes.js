@@ -14,6 +14,9 @@ router.post('/guess', characterController.checkGuess);
 //search for a character by name
 router.get('/search', characterController.searchCharacter);
 
+// Update the route to match the frontend endpoint
+router.get('/character-image/:name', characterController.fetchCharacterImage);
+
 router.get('/update-images', async (req, res) => {
     try {
       const updatedCharacters = await updateCharactersWithImages();

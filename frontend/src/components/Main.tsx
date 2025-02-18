@@ -108,7 +108,6 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
 
     try {
       const res = await axios.get<CorrectCharacter>("/api/characters/random");
-      // Transform the response data to match the CorrectCharacter interface
       const transformedCharacter: CorrectCharacter = {
         id: res.data.id,
         name: res.data.name,
@@ -118,12 +117,15 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
         weaponType: res.data.weaponType || "Unknown",
         role: res.data.role || "Unknown",
       };
+      
       setCorrectCharacter(transformedCharacter);
+      // Call onFeedbackUpdate with null feedback for initial state
+      onFeedbackUpdate(null, transformedCharacter);
       setFeedback(null);
       setGuess("");
       setAttempts(0);
       setIsPlaying(true);
-      console.log("Fetched character:", transformedCharacter);
+      console.log("Fetched and set character:", transformedCharacter);
     } catch (error) {
       console.error("Failed to fetch random character:", error);
     } finally {
@@ -190,7 +192,7 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
       setAttempts((prev) => prev + 1);
       
       if (correctCharacter) {
-        onFeedbackUpdate(res.data.feedback, correctCharacter);
+        handleFeedback(res.data.feedback, correctCharacter);
       }
     } catch (error) {
       console.error("Failed to check guess:", error);
@@ -209,6 +211,16 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
   const getCorrectCount = () => {
     if (!feedback) return 0;
     return Object.values(feedback).filter((value) => value === true).length;
+  };
+
+  // Add this logging before calling onFeedbackUpdate
+  const handleFeedback = (feedback: Feedback, character: CorrectCharacter) => {
+    console.log('Main component sending feedback:', {
+      feedback,
+      character,
+      hasName: character?.name
+    });
+    onFeedbackUpdate(feedback, character);
   };
 
   return (
