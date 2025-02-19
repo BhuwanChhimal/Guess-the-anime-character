@@ -10,6 +10,13 @@ interface CharacterCardProps {
     weaponType: boolean;
     role: boolean;
   } | null;
+  cumulativeCorrect: {
+    animeName: boolean;
+    hairColor: boolean;
+    powerType: boolean;
+    weaponType: boolean;
+    role: boolean;
+  };
   correctCharacter: {
     name: string;
     animeName: string;
@@ -31,6 +38,7 @@ const InfoRow = ({ label, value, isRevealed }: { label: string; value: string; i
 
 const CharacterCard: React.FC<CharacterCardProps> = ({
   feedback,
+  cumulativeCorrect,
   correctCharacter
 }) => {
   const [imageUrl, setImageUrl] = React.useState<string>(questionMark);
@@ -105,27 +113,27 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
         <InfoRow 
           label="Anime Name" 
           value={correctCharacter?.animeName || '??'}
-          isRevealed={feedback?.animeName || false}
+          isRevealed={cumulativeCorrect.animeName}
         />
         <InfoRow 
           label="Hair Color" 
           value={correctCharacter?.hairColor || '??'}
-          isRevealed={feedback?.hairColor || false}
+          isRevealed={cumulativeCorrect.hairColor}
         />
         <InfoRow 
           label="Power Type" 
           value={correctCharacter?.powerType || '??'}
-          isRevealed={feedback?.powerType || false}
+          isRevealed={cumulativeCorrect.powerType}
         />
         <InfoRow 
           label="Weapon Type" 
           value={correctCharacter?.weaponType || '??'}
-          isRevealed={feedback?.weaponType || false}
+          isRevealed={cumulativeCorrect.weaponType}
         />
         <InfoRow 
           label="Role" 
           value={correctCharacter?.role || '??'}
-          isRevealed={feedback?.role || false}
+          isRevealed={cumulativeCorrect.role}
         />
       </div>
     </div>

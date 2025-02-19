@@ -9,6 +9,8 @@ import {
   CheckCircle,
   XCircle,
   HelpCircle,
+  X, // Add X icon import
+  PartyPopper, // Add PartyPopper
 } from "lucide-react";
 
 interface Character {
@@ -42,7 +44,7 @@ interface FeedbackEntry {
 }
 
 interface MainProps {
-  onFeedbackUpdate: (feedback: Feedback, character: CorrectCharacter) => void;
+  onFeedbackUpdate: (feedback: Feedback, character: CorrectCharacter, cumulative: Feedback) => void;
 }
 
 interface HintState {
@@ -65,12 +67,33 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
   const [gameStartAnimation, setGameStartAnimation] = useState<boolean>(false);
   const [feedbackHistory, setFeedbackHistory] = useState<FeedbackEntry[]>([]);
   const [hintState, setHintState] = useState<HintState>({ isVisible: false, hint: null });
+  const [playButtonText, setPlayButtonText] = useState<string>("PLAY");
+  const [showGameStartMessage, setShowGameStartMessage] = useState<boolean>(false);
+  const [isCharacterGuessed, setIsCharacterGuessed] = useState<boolean>(false);
+  const [cumulativeCorrect, setCumulativeCorrect] = useState<Feedback>({
+    animeName: false,
+    hairColor: false,
+    powerType: false,
+    weaponType: false,
+    role: false,
+  });
+
+  // Add this function to track cumulative correct guesses
+  const updateCumulativeCorrect = (newFeedback: Feedback) => {
+    setCumulativeCorrect(prev => ({
+      animeName: prev.animeName || newFeedback.animeName,
+      hairColor: prev.hairColor || newFeedback.hairColor,
+      powerType: prev.powerType || newFeedback.powerType,
+      weaponType: prev.weaponType || newFeedback.weaponType,
+      role: prev.role || newFeedback.role,
+    }));
+  };
 
   const generateHint = () => {
     if (!feedback || !correctCharacter) return null;
 
-    // Get all incorrect criteria
-    const incorrectCriteria = Object.entries(feedback)
+    // Get all criteria that have never been correct
+    const incorrectCriteria = Object.entries(cumulativeCorrect)
       .filter(([_, isCorrect]) => !isCorrect)
       .map(([key]) => key);
 
@@ -105,6 +128,14 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
     setIsLoading(true);
     setGameStartAnimation(true);
     setFeedbackHistory([]);
+    setPlayButtonText("LOADING...");
+    setCumulativeCorrect({
+      animeName: false,
+      hairColor: false,
+      powerType: false,
+      weaponType: false,
+      role: false,
+    });
 
     try {
       const res = await axios.get<CorrectCharacter>("/api/characters/random");
@@ -120,18 +151,31 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
       
       setCorrectCharacter(transformedCharacter);
       // Call onFeedbackUpdate with null feedback for initial state
-      onFeedbackUpdate(null, transformedCharacter);
+      onFeedbackUpdate(null, transformedCharacter, {
+        animeName: false,
+        hairColor: false,
+        powerType: false,
+        weaponType: false,
+        role: false,
+      });
       setFeedback(null);
       setGuess("");
       setAttempts(0);
       setIsPlaying(true);
+      setPlayButtonText("QUIT GAME");
+      setShowGameStartMessage(true);
       console.log("Fetched and set character:", transformedCharacter);
     } catch (error) {
       console.error("Failed to fetch random character:", error);
+      setPlayButtonText("PLAY");
     } finally {
       setIsLoading(false);
       setTimeout(() => setGameStartAnimation(false), 500);
     }
+  };
+
+  const handleQuit = () => {
+    window.location.reload();
   };
 
   const handleInputChange = async (
@@ -158,6 +202,11 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
     }
   };
 
+  // Add this function to check if all feedback is correct
+  const isAllCorrect = (feedbackObj: Feedback) => {
+    return Object.values(feedbackObj).every(value => value === true);
+  };
+
   const handleSubmit = async (
     e: React.FormEvent<HTMLFormElement>
   ): Promise<void> => {
@@ -179,6 +228,9 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
         }
       );
       
+      // Update cumulative correct guesses
+      updateCumulativeCorrect(res.data.feedback);
+      
       // Create new feedback entry
       const newFeedbackEntry: FeedbackEntry = {
         feedback: res.data.feedback,
@@ -191,6 +243,12 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
       setFeedback(res.data.feedback);
       setAttempts((prev) => prev + 1);
       
+      const isGuessedCorrectly = isAllCorrect(res.data.feedback);
+      setIsCharacterGuessed(isGuessedCorrectly);
+      if (isGuessedCorrectly) {
+        setPlayButtonText("PLAY AGAIN");
+      }
+
       if (correctCharacter) {
         handleFeedback(res.data.feedback, correctCharacter);
       }
@@ -215,12 +273,17 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
 
   // Add this logging before calling onFeedbackUpdate
   const handleFeedback = (feedback: Feedback, character: CorrectCharacter) => {
-    console.log('Main component sending feedback:', {
-      feedback,
-      character,
-      hasName: character?.name
-    });
-    onFeedbackUpdate(feedback, character);
+    // Update cumulative correct before sending
+    const newCumulative = {
+      animeName: cumulativeCorrect.animeName || feedback.animeName,
+      hairColor: cumulativeCorrect.hairColor || feedback.hairColor,
+      powerType: cumulativeCorrect.powerType || feedback.powerType,
+      weaponType: cumulativeCorrect.weaponType || feedback.weaponType,
+      role: cumulativeCorrect.role || feedback.role,
+    };
+    
+    setCumulativeCorrect(newCumulative);
+    onFeedbackUpdate(feedback, character, newCumulative);
   };
 
   return (
@@ -240,37 +303,66 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
       {/* Scrollable Content Area */}
       <div className="flex-1 overflow-y-auto overflow-x-hidden p-4 sm:p-6 scrollbar-hide">
         <div className="max-w-3xl mx-auto space-y-4">
+          {/* Success Message */}
+          {isCharacterGuessed && (
+            <div className="animate-fadeIn bg-green-900 bg-opacity-20 p-4 rounded-lg border border-green-500 text-center mb-6">
+              <div className="flex items-center justify-center gap-2 text-green-400">
+                <PartyPopper className="animate-bounce" size={24} />
+                <span className="font-bold text-lg">Congratulations!</span>
+                <PartyPopper className="animate-bounce" size={24} />
+              </div>
+              <p className="text-green-300 mt-2">
+                You've successfully guessed the character in {attempts} attempts!
+              </p>
+            </div>
+          )}
+
           {/* Instructions */}
           <div className="text-center mb-4 sm:mb-6">
             <p className="text-sm text-purple-200">
-              Hit play to get a random anime character and try to guess that
-              character
+              {!isPlaying 
+                ? "Hit play to get a random anime character and try to guess that character"
+                : "A character has been selected! How quickly can you guess it?"
+              }
             </p>
           </div>
 
-          {/* Play Button */}
-          <div className="flex justify-center mb-6 sm:mb-8">
+          {/* Play/Quit Button */}
+          <div className="flex flex-col items-center gap-3 mb-6 sm:mb-8">
             <button
               className={`group relative px-8 py-3 rounded-full overflow-hidden ${
                 isLoading
                   ? "bg-gray-600 cursor-not-allowed"
+                  : isCharacterGuessed
+                  ? "bg-green-600 hover:bg-green-700"
+                  : isPlaying
+                  ? "bg-red-600 hover:bg-red-700"
                   : "bg-gradient-to-r from-purple-600 to-purple-800 hover:shadow-lg hover:shadow-purple-500/30 transform hover:scale-105"
               } transition-all duration-300`}
-              onClick={!isLoading ? handleStartPlay : undefined}
+              onClick={isPlaying ? handleQuit : (!isLoading ? handleStartPlay : undefined)}
               disabled={isLoading}
             >
               <div className="absolute inset-0 w-full h-full bg-purple-500 opacity-0 group-hover:opacity-20 transition-opacity"></div>
               <div className="flex items-center justify-center relative">
                 {isLoading ? (
                   <RotateCcw className="animate-spin mr-2" size={18} />
+                ) : isCharacterGuessed ? (
+                  <Play className="mr-2" size={18} />
+                ) : isPlaying ? (
+                  <X className="mr-2" size={18} />
                 ) : (
                   <Play className="mr-2" size={18} />
                 )}
                 <span className="font-bold">
-                  {isLoading ? "LOADING..." : "PLAY"}
+                  {playButtonText}
                 </span>
               </div>
             </button>
+            {showGameStartMessage && isPlaying && (
+              <p className="text-sm text-purple-300 animate-fadeIn">
+                🎮 Game Started! Take your best guess!
+              </p>
+            )}
           </div>
 
           {/* Guess Input Section */}

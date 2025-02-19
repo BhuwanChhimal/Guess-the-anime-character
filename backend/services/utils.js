@@ -6,7 +6,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Chakra",
       weapon_type: "Kunai, Shuriken",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Sasuke Uchiha",
@@ -14,7 +14,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Chakra",
       weapon_type: "Kunai, Shuriken",
-      role: "Deuteragonist",
+      role: "Deuteragonist"
     },
     {
       character_name: "Goku",
@@ -22,7 +22,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Ki",
       weapon_type: "Power Pole",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Vegeta",
@@ -30,7 +30,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Ki",
       weapon_type: "Fist",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Luffy",
@@ -38,7 +38,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Devil Fruit",
       weapon_type: "Fist",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Zoro",
@@ -46,7 +46,7 @@ module.exports = {
       hair_color: "Green",
       power_type: "Swordsmanship",
       weapon_type: "Katana",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Light Yagami",
@@ -54,7 +54,7 @@ module.exports = {
       hair_color: "Brown",
       power_type: "Intelligence",
       weapon_type: "Death Note",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Eren Yeager",
@@ -62,7 +62,7 @@ module.exports = {
       hair_color: "Brown",
       power_type: "Titan Shifter",
       weapon_type: "Omni-Directional Mobility Gear",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Levi Ackerman",
@@ -70,7 +70,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Combat Skills",
       weapon_type: "Omni-Directional Mobility Gear",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Edward Elric",
@@ -78,7 +78,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Alchemy",
       weapon_type: "Automail",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Alphonse Elric",
@@ -86,7 +86,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Alchemy",
       weapon_type: "Fist",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Ichigo Kurosaki",
@@ -94,7 +94,7 @@ module.exports = {
       hair_color: "Orange",
       power_type: "Soul Reaper",
       weapon_type: "Zanpakuto",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Rukia Kuchiki",
@@ -102,7 +102,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Soul Reaper",
       weapon_type: "Zanpakuto",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Natsu Dragneel",
@@ -110,7 +110,7 @@ module.exports = {
       hair_color: "Pink",
       power_type: "Dragon Slayer Magic",
       weapon_type: "Fist",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Erza Scarlet",
@@ -118,7 +118,7 @@ module.exports = {
       hair_color: "Red",
       power_type: "Requip Magic",
       weapon_type: "Swords",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Killua Zoldyck",
@@ -126,7 +126,7 @@ module.exports = {
       hair_color: "White",
       power_type: "Nen",
       weapon_type: "Claws",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Gon Freecss",
@@ -134,7 +134,7 @@ module.exports = {
       hair_color: "Green",
       power_type: "Nen",
       weapon_type: "Fishing Rod",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Saitama",
@@ -142,7 +142,7 @@ module.exports = {
       hair_color: "None",
       power_type: "Super Strength",
       weapon_type: "Fist",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Genos",
@@ -150,7 +150,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Cyborg Enhancements",
       weapon_type: "Arm Cannons",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Kenshin Himura",
@@ -158,7 +158,7 @@ module.exports = {
       hair_color: "Red",
       power_type: "Swordsmanship",
       weapon_type: "Sakabato",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Shoto Todoroki",
@@ -166,7 +166,7 @@ module.exports = {
       hair_color: "Red and White",
       power_type: "Quirk (Half-Cold Half-Hot)",
       weapon_type: "Fist",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Izuku Midoriya",
@@ -174,7 +174,7 @@ module.exports = {
       hair_color: "Green",
       power_type: "Quirk (One For All)",
       weapon_type: "Fist",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Kakashi Hatake",
@@ -182,7 +182,7 @@ module.exports = {
       hair_color: "Silver",
       power_type: "Chakra",
       weapon_type: "Kunai, Shuriken",
-      role: "Mentor",
+      role: "Mentor"
     },
     {
       character_name: "Itachi Uchiha",
@@ -190,7 +190,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Chakra",
       weapon_type: "Kunai, Shuriken",
-      role: "Antagonist",
+      role: "Antagonist"
     },
     {
       character_name: "Ryuk",
@@ -198,7 +198,7 @@ module.exports = {
       hair_color: "None",
       power_type: "Shinigami",
       weapon_type: "Death Note",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Mikasa Ackerman",
@@ -206,7 +206,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Combat Skills",
       weapon_type: "Omni-Directional Mobility Gear",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Roy Mustang",
@@ -214,7 +214,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Alchemy",
       weapon_type: "Gloves",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Winry Rockbell",
@@ -222,7 +222,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Engineering",
       weapon_type: "Wrench",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Yoruichi Shihouin",
@@ -230,7 +230,7 @@ module.exports = {
       hair_color: "Purple",
       power_type: "Soul Reaper",
       weapon_type: "Fist",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Gray Fullbuster",
@@ -238,7 +238,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Ice-Make Magic",
       weapon_type: "Fist",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Hisoka Morow",
@@ -246,7 +246,7 @@ module.exports = {
       hair_color: "Red",
       power_type: "Nen",
       weapon_type: "Playing Cards",
-      role: "Antagonist",
+      role: "Antagonist"
     },
     {
       character_name: "All Might",
@@ -254,7 +254,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Quirk (One For All)",
       weapon_type: "Fist",
-      role: "Mentor",
+      role: "Mentor"
     },
     {
       character_name: "Kamina",
@@ -262,7 +262,7 @@ module.exports = {
       hair_color: "Blue",
       power_type: "Spiral Energy",
       weapon_type: "Sword",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Simon",
@@ -270,7 +270,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Spiral Energy",
       weapon_type: "Drill",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Spike Spiegel",
@@ -278,7 +278,7 @@ module.exports = {
       hair_color: "Brown",
       power_type: "Combat Skills",
       weapon_type: "Pistol",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Faye Valentine",
@@ -286,7 +286,7 @@ module.exports = {
       hair_color: "Brown",
       power_type: "Combat Skills",
       weapon_type: "Pistol",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Vash the Stampede",
@@ -294,7 +294,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Superhuman Abilities",
       weapon_type: "Pistol",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Maka Albarn",
@@ -302,7 +302,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Soul Resonance",
       weapon_type: "Scythe",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Soul Evans",
@@ -310,7 +310,7 @@ module.exports = {
       hair_color: "White",
       power_type: "Soul Resonance",
       weapon_type: "Scythe",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Kirito",
@@ -318,7 +318,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Swordsmanship",
       weapon_type: "Sword",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Asuna Yuuki",
@@ -326,7 +326,7 @@ module.exports = {
       hair_color: "Chestnut",
       power_type: "Swordsmanship",
       weapon_type: "Rapier",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Lelouch Lamperouge",
@@ -334,7 +334,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Geass",
       weapon_type: "Strategy",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "C.C.",
@@ -342,7 +342,7 @@ module.exports = {
       hair_color: "Green",
       power_type: "Immortality",
       weapon_type: "Geass",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Touka Kirishima",
@@ -350,7 +350,7 @@ module.exports = {
       hair_color: "Blue",
       power_type: "Ghoul Abilities",
       weapon_type: "Kagune",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Rin Okumura",
@@ -358,7 +358,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Demon Powers",
       weapon_type: "Sword",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Yukio Okumura",
@@ -366,7 +366,7 @@ module.exports = {
       hair_color: "Brown",
       power_type: "Exorcist Skills",
       weapon_type: "Guns",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Meliodas",
@@ -374,7 +374,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Demon Power",
       weapon_type: "Sword",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Ban",
@@ -382,7 +382,7 @@ module.exports = {
       hair_color: "White",
       power_type: "Immortality",
       weapon_type: "Sacred Treasure",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Astro",
@@ -390,7 +390,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Robotic Abilities",
       weapon_type: "Arm Cannon",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Black Jack",
@@ -398,7 +398,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Medical Skills",
       weapon_type: "Scalpel",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Doraemon",
@@ -406,7 +406,7 @@ module.exports = {
       hair_color: "Blue",
       power_type: "Gadgets",
       weapon_type: "None",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Nobita Nobi",
@@ -414,7 +414,7 @@ module.exports = {
       hair_color: "Brown",
       power_type: "None",
       weapon_type: "None",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Sailor Moon",
@@ -422,7 +422,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Magical Girl",
       weapon_type: "Moon Stick",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Tuxedo Mask",
@@ -430,7 +430,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Magical Abilities",
       weapon_type: "Rose",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Inuyasha",
@@ -438,7 +438,7 @@ module.exports = {
       hair_color: "Silver",
       power_type: "Demon Powers",
       weapon_type: "Tessaiga",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Kagome Higurashi",
@@ -446,7 +446,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Spiritual Powers",
       weapon_type: "Bow and Arrow",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Guts",
@@ -454,7 +454,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Combat Skills",
       weapon_type: "Dragonslayer Sword",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Griffith",
@@ -462,7 +462,7 @@ module.exports = {
       hair_color: "White",
       power_type: "Demonic Powers",
       weapon_type: "Sword",
-      role: "Antagonist",
+      role: "Antagonist"
     },
     {
       character_name: "Alucard",
@@ -470,7 +470,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Vampire",
       weapon_type: "Pistol",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Seras Victoria",
@@ -478,7 +478,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Vampire",
       weapon_type: "Harkonnen",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Kenshiro",
@@ -486,7 +486,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Hokuto Shinken",
       weapon_type: "Fist",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Raoh",
@@ -494,7 +494,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Hokuto Shinken",
       weapon_type: "Fist",
-      role: "Antagonist",
+      role: "Antagonist"
     },
     {
       character_name: "Soma Yukihira",
@@ -502,7 +502,7 @@ module.exports = {
       hair_color: "Red",
       power_type: "Culinary Skills",
       weapon_type: "Knife",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Erina Nakiri",
@@ -510,7 +510,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Culinary Skills",
       weapon_type: "Knife",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Tanjiro Kamado",
@@ -518,7 +518,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Breathing Techniques",
       weapon_type: "Nichirin Sword",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Nezuko Kamado",
@@ -526,7 +526,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Demon Powers",
       weapon_type: "Fist",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Zenitsu Agatsuma",
@@ -534,7 +534,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Breathing Techniques",
       weapon_type: "Nichirin Sword",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Inosuke Hashibira",
@@ -542,295 +542,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Breathing Techniques",
       weapon_type: "Dual Nichirin Swords",
-      role: "Supporting",
-    },
-    {
-      character_name: "Kamina",
-      anime_name: "Gurren Lagann",
-      hair_color: "Blue",
-      power_type: "Spiral Energy",
-      weapon_type: "Sword",
-      role: "Supporting",
-    },
-    {
-      character_name: "Simon",
-      anime_name: "Gurren Lagann",
-      hair_color: "Black",
-      power_type: "Spiral Energy",
-      weapon_type: "Drill",
-      role: "Protagonist",
-    },
-    {
-      character_name: "Spike Spiegel",
-      anime_name: "Cowboy Bebop",
-      hair_color: "Brown",
-      power_type: "Combat Skills",
-      weapon_type: "Pistol",
-      role: "Protagonist",
-    },
-    {
-      character_name: "Faye Valentine",
-      anime_name: "Cowboy Bebop",
-      hair_color: "Brown",
-      power_type: "Combat Skills",
-      weapon_type: "Pistol",
-      role: "Supporting",
-    },
-    {
-      character_name: "Vash the Stampede",
-      anime_name: "Trigun",
-      hair_color: "Blonde",
-      power_type: "Superhuman Abilities",
-      weapon_type: "Pistol",
-      role: "Protagonist",
-    },
-    {
-      character_name: "Maka Albarn",
-      anime_name: "Soul Eater",
-      hair_color: "Blonde",
-      power_type: "Soul Resonance",
-      weapon_type: "Scythe",
-      role: "Protagonist",
-    },
-    {
-      character_name: "Soul Evans",
-      anime_name: "Soul Eater",
-      hair_color: "White",
-      power_type: "Soul Resonance",
-      weapon_type: "Scythe",
-      role: "Supporting",
-    },
-    {
-      character_name: "Kirito",
-      anime_name: "Sword Art Online",
-      hair_color: "Black",
-      power_type: "Swordsmanship",
-      weapon_type: "Sword",
-      role: "Protagonist",
-    },
-    {
-      character_name: "Asuna Yuuki",
-      anime_name: "Sword Art Online",
-      hair_color: "Chestnut",
-      power_type: "Swordsmanship",
-      weapon_type: "Rapier",
-      role: "Supporting",
-    },
-    {
-      character_name: "Lelouch Lamperouge",
-      anime_name: "Code Geass",
-      hair_color: "Black",
-      power_type: "Geass",
-      weapon_type: "Strategy",
-      role: "Protagonist",
-    },
-    {
-      character_name: "C.C.",
-      anime_name: "Code Geass",
-      hair_color: "Green",
-      power_type: "Immortality",
-      weapon_type: "Geass",
-      role: "Supporting",
-    },
-    {
-      character_name: "Touka Kirishima",
-      anime_name: "Tokyo Ghoul",
-      hair_color: "Blue",
-      power_type: "Ghoul Abilities",
-      weapon_type: "Kagune",
-      role: "Supporting",
-    },
-    {
-      character_name: "Rin Okumura",
-      anime_name: "Blue Exorcist",
-      hair_color: "Black",
-      power_type: "Demon Powers",
-      weapon_type: "Sword",
-      role: "Protagonist",
-    },
-    {
-      character_name: "Yukio Okumura",
-      anime_name: "Blue Exorcist",
-      hair_color: "Brown",
-      power_type: "Exorcist Skills",
-      weapon_type: "Guns",
-      role: "Supporting",
-    },
-    {
-      character_name: "Meliodas",
-      anime_name: "Seven Deadly Sins",
-      hair_color: "Blonde",
-      power_type: "Demon Power",
-      weapon_type: "Sword",
-      role: "Protagonist",
-    },
-    {
-      character_name: "Ban",
-      anime_name: "Seven Deadly Sins",
-      hair_color: "White",
-      power_type: "Immortality",
-      weapon_type: "Sacred Treasure",
-      role: "Supporting",
-    },
-    {
-      character_name: "Astro",
-      anime_name: "Astro Boy",
-      hair_color: "Black",
-      power_type: "Robotic Abilities",
-      weapon_type: "Arm Cannon",
-      role: "Protagonist",
-    },
-    {
-      character_name: "Black Jack",
-      anime_name: "Black Jack",
-      hair_color: "Black",
-      power_type: "Medical Skills",
-      weapon_type: "Scalpel",
-      role: "Protagonist",
-    },
-    {
-      character_name: "Doraemon",
-      anime_name: "Doraemon",
-      hair_color: "Blue",
-      power_type: "Gadgets",
-      weapon_type: "None",
-      role: "Protagonist",
-    },
-    {
-      character_name: "Nobita Nobi",
-      anime_name: "Doraemon",
-      hair_color: "Brown",
-      power_type: "None",
-      weapon_type: "None",
-      role: "Supporting",
-    },
-    {
-      character_name: "Sailor Moon",
-      anime_name: "Sailor Moon",
-      hair_color: "Blonde",
-      power_type: "Magical Girl",
-      weapon_type: "Moon Stick",
-      role: "Protagonist",
-    },
-    {
-      character_name: "Tuxedo Mask",
-      anime_name: "Sailor Moon",
-      hair_color: "Black",
-      power_type: "Magical Abilities",
-      weapon_type: "Rose",
-      role: "Supporting",
-    },
-    {
-      character_name: "Inuyasha",
-      anime_name: "Inuyasha",
-      hair_color: "Silver",
-      power_type: "Demon Powers",
-      weapon_type: "Tessaiga",
-      role: "Protagonist",
-    },
-    {
-      character_name: "Kagome Higurashi",
-      anime_name: "Inuyasha",
-      hair_color: "Black",
-      power_type: "Spiritual Powers",
-      weapon_type: "Bow and Arrow",
-      role: "Supporting",
-    },
-    {
-      character_name: "Guts",
-      anime_name: "Berserk",
-      hair_color: "Black",
-      power_type: "Combat Skills",
-      weapon_type: "Dragonslayer Sword",
-      role: "Protagonist",
-    },
-    {
-      character_name: "Griffith",
-      anime_name: "Berserk",
-      hair_color: "White",
-      power_type: "Demonic Powers",
-      weapon_type: "Sword",
-      role: "Antagonist",
-    },
-    {
-      character_name: "Alucard",
-      anime_name: "Hellsing",
-      hair_color: "Black",
-      power_type: "Vampire",
-      weapon_type: "Pistol",
-      role: "Protagonist",
-    },
-    {
-      character_name: "Seras Victoria",
-      anime_name: "Hellsing",
-      hair_color: "Blonde",
-      power_type: "Vampire",
-      weapon_type: "Harkonnen",
-      role: "Supporting",
-    },
-    {
-      character_name: "Kenshiro",
-      anime_name: "Fist of the North Star",
-      hair_color: "Black",
-      power_type: "Hokuto Shinken",
-      weapon_type: "Fist",
-      role: "Protagonist",
-    },
-    {
-      character_name: "Raoh",
-      anime_name: "Fist of the North Star",
-      hair_color: "Black",
-      power_type: "Hokuto Shinken",
-      weapon_type: "Fist",
-      role: "Antagonist",
-    },
-    {
-      character_name: "Soma Yukihira",
-      anime_name: "Food Wars",
-      hair_color: "Red",
-      power_type: "Culinary Skills",
-      weapon_type: "Knife",
-      role: "Protagonist",
-    },
-    {
-      character_name: "Erina Nakiri",
-      anime_name: "Food Wars",
-      hair_color: "Blonde",
-      power_type: "Culinary Skills",
-      weapon_type: "Knife",
-      role: "Supporting",
-    },
-    {
-      character_name: "Tanjiro Kamado",
-      anime_name: "Demon Slayer",
-      hair_color: "Black",
-      power_type: "Breathing Techniques",
-      weapon_type: "Nichirin Sword",
-      role: "Protagonist",
-    },
-    {
-      character_name: "Nezuko Kamado",
-      anime_name: "Demon Slayer",
-      hair_color: "Black",
-      power_type: "Demon Powers",
-      weapon_type: "Fist",
-      role: "Supporting",
-    },
-    {
-      character_name: "Zenitsu Agatsuma",
-      anime_name: "Demon Slayer",
-      hair_color: "Blonde",
-      power_type: "Breathing Techniques",
-      weapon_type: "Nichirin Sword",
-      role: "Supporting",
-    },
-    {
-      character_name: "Inosuke Hashibira",
-      anime_name: "Demon Slayer",
-      hair_color: "Black",
-      power_type: "Breathing Techniques",
-      weapon_type: "Dual Nichirin Swords",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Gojo Satoru",
@@ -838,7 +550,7 @@ module.exports = {
       hair_color: "White",
       power_type: "Cursed Technique",
       weapon_type: "Cursed Energy",
-      role: "Mentor",
+      role: "Mentor"
     },
     {
       character_name: "Yuji Itadori",
@@ -846,7 +558,7 @@ module.exports = {
       hair_color: "Pink",
       power_type: "Cursed Energy",
       weapon_type: "Fist",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Megumi Fushiguro",
@@ -854,7 +566,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Cursed Technique",
       weapon_type: "Shikigami",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Nobara Kugisaki",
@@ -862,7 +574,7 @@ module.exports = {
       hair_color: "Orange",
       power_type: "Cursed Technique",
       weapon_type: "Hammer and Nails",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Denji",
@@ -870,7 +582,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Devil Powers",
       weapon_type: "Chainsaws",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Power",
@@ -878,7 +590,7 @@ module.exports = {
       hair_color: "Pink",
       power_type: "Devil Powers",
       weapon_type: "Blood manipulation",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Makima",
@@ -886,7 +598,7 @@ module.exports = {
       hair_color: "Orange",
       power_type: "Devil Powers",
       weapon_type: "Control",
-      role: "Antagonist",
+      role: "Antagonist"
     },
     {
       character_name: "Violet Evergarden",
@@ -894,7 +606,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Mechanical Arms",
       weapon_type: "Typewriter",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Anya Forger",
@@ -902,7 +614,7 @@ module.exports = {
       hair_color: "Pink",
       power_type: "Telepathy",
       weapon_type: "None",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Loid Forger",
@@ -910,7 +622,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Espionage Skills",
       weapon_type: "Various",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Yor Forger",
@@ -918,7 +630,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Assassin Skills",
       weapon_type: "Various",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Marin Kitagawa",
@@ -926,7 +638,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "None",
       weapon_type: "None",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Bojji",
@@ -934,7 +646,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Physical Abilities",
       weapon_type: "Sword",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Kage",
@@ -942,7 +654,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Shadow Abilities",
       weapon_type: "None",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Joe",
@@ -950,7 +662,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Boxing Skills",
       weapon_type: "Fist",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Thorfinn",
@@ -958,7 +670,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Combat Skills",
       weapon_type: "Dagger",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Askeladd",
@@ -966,7 +678,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Combat Skills",
       weapon_type: "Sword",
-      role: "Antagonist",
+      role: "Antagonist"
     },
     {
       character_name: "Thors",
@@ -974,7 +686,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Combat Skills",
       weapon_type: "Sword",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Mob",
@@ -982,7 +694,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Psychic Powers",
       weapon_type: "None",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Reigen Arataka",
@@ -990,7 +702,7 @@ module.exports = {
       hair_color: "Brown",
       power_type: "None",
       weapon_type: "Salt",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Rengoku Kyojuro",
@@ -998,7 +710,7 @@ module.exports = {
       hair_color: "Red and Yellow",
       power_type: "Breathing Techniques",
       weapon_type: "Nichirin Sword",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Giyu Tomioka",
@@ -1006,7 +718,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Breathing Techniques",
       weapon_type: "Nichirin Sword",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Shinobu Kocho",
@@ -1014,7 +726,7 @@ module.exports = {
       hair_color: "Black and Purple",
       power_type: "Breathing Techniques",
       weapon_type: "Nichirin Sword",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Muzan Kibutsuji",
@@ -1022,7 +734,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Demon Powers",
       weapon_type: "Blood Demon Art",
-      role: "Antagonist",
+      role: "Antagonist"
     },
     {
       character_name: "Sukuna",
@@ -1030,7 +742,7 @@ module.exports = {
       hair_color: "Pink",
       power_type: "Cursed Technique",
       weapon_type: "Cursed Energy",
-      role: "Antagonist",
+      role: "Antagonist"
     },
     {
       character_name: "Nanami Kento",
@@ -1038,7 +750,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Cursed Technique",
       weapon_type: "Cursed Energy",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Maki Zenin",
@@ -1046,7 +758,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Physical Enhancement",
       weapon_type: "Various Weapons",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Todo Aoi",
@@ -1054,7 +766,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Cursed Technique",
       weapon_type: "Cursed Energy",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Aki Hayakawa",
@@ -1062,7 +774,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Devil Powers",
       weapon_type: "Fox Devil",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Himeno",
@@ -1070,7 +782,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Devil Powers",
       weapon_type: "Ghost Devil",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Annie Leonhart",
@@ -1078,7 +790,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Titan Shifter",
       weapon_type: "Omni-Directional Mobility Gear",
-      role: "Antagonist",
+      role: "Antagonist"
     },
     {
       character_name: "Reiner Braun",
@@ -1086,7 +798,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Titan Shifter",
       weapon_type: "Omni-Directional Mobility Gear",
-      role: "Antagonist",
+      role: "Antagonist"
     },
     {
       character_name: "Historia Reiss",
@@ -1094,7 +806,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Royal Blood",
       weapon_type: "Omni-Directional Mobility Gear",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Zeke Yeager",
@@ -1102,7 +814,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Titan Shifter",
       weapon_type: "Rock Throwing",
-      role: "Antagonist",
+      role: "Antagonist"
     },
     {
       character_name: "Hawks",
@@ -1110,7 +822,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Quirk (Fierce Wings)",
       weapon_type: "Feathers",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Endeavor",
@@ -1118,7 +830,7 @@ module.exports = {
       hair_color: "Red",
       power_type: "Quirk (Hellflame)",
       weapon_type: "Fire",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Tomura Shigaraki",
@@ -1126,7 +838,7 @@ module.exports = {
       hair_color: "Light Blue",
       power_type: "Quirk (Decay)",
       weapon_type: "Touch",
-      role: "Antagonist",
+      role: "Antagonist"
     },
     {
       character_name: "Ochako Uraraka",
@@ -1134,7 +846,7 @@ module.exports = {
       hair_color: "Brown",
       power_type: "Quirk (Zero Gravity)",
       weapon_type: "Touch",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Katsuki Bakugo",
@@ -1142,7 +854,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Quirk (Explosion)",
       weapon_type: "Explosions",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Pain",
@@ -1150,7 +862,7 @@ module.exports = {
       hair_color: "Orange",
       power_type: "Chakra",
       weapon_type: "Rinnegan",
-      role: "Antagonist",
+      role: "Antagonist"
     },
     {
       character_name: "Madara Uchiha",
@@ -1158,7 +870,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Chakra",
       weapon_type: "Sharingan",
-      role: "Antagonist",
+      role: "Antagonist"
     },
     {
       character_name: "Hinata Hyuga",
@@ -1166,7 +878,7 @@ module.exports = {
       hair_color: "Dark Blue",
       power_type: "Chakra",
       weapon_type: "Byakugan",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Gaara",
@@ -1174,7 +886,7 @@ module.exports = {
       hair_color: "Red",
       power_type: "Chakra",
       weapon_type: "Sand",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Rock Lee",
@@ -1182,7 +894,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Taijutsu",
       weapon_type: "Fist",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Frieza",
@@ -1190,7 +902,7 @@ module.exports = {
       hair_color: "None",
       power_type: "Ki",
       weapon_type: "Energy Blasts",
-      role: "Antagonist",
+      role: "Antagonist"
     },
     {
       character_name: "Cell",
@@ -1198,7 +910,7 @@ module.exports = {
       hair_color: "None",
       power_type: "Ki",
       weapon_type: "Energy Blasts",
-      role: "Antagonist",
+      role: "Antagonist"
     },
     {
       character_name: "Gohan",
@@ -1206,7 +918,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Ki",
       weapon_type: "Energy Blasts",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Piccolo",
@@ -1214,7 +926,7 @@ module.exports = {
       hair_color: "None",
       power_type: "Ki",
       weapon_type: "Energy Blasts",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Trunks",
@@ -1222,7 +934,7 @@ module.exports = {
       hair_color: "Purple",
       power_type: "Ki",
       weapon_type: "Sword",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Marco",
@@ -1230,7 +942,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Devil Fruit",
       weapon_type: "Phoenix Powers",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Ace",
@@ -1238,7 +950,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Devil Fruit",
       weapon_type: "Fire",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Shanks",
@@ -1246,7 +958,7 @@ module.exports = {
       hair_color: "Red",
       power_type: "Haki",
       weapon_type: "Sword",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Nami",
@@ -1254,7 +966,7 @@ module.exports = {
       hair_color: "Orange",
       power_type: "Weather Control",
       weapon_type: "Clima-Tact",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Sanji",
@@ -1262,7 +974,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Fighting Skills",
       weapon_type: "Legs",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "L",
@@ -1270,7 +982,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Intelligence",
       weapon_type: "Deductive Skills",
-      role: "Antagonist",
+      role: "Antagonist"
     },
     {
       character_name: "Near",
@@ -1278,7 +990,7 @@ module.exports = {
       hair_color: "White",
       power_type: "Intelligence",
       weapon_type: "Deductive Skills",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Misa Amane",
@@ -1286,7 +998,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Shinigami Eyes",
       weapon_type: "Death Note",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Yuno Gasai",
@@ -1294,7 +1006,7 @@ module.exports = {
       hair_color: "Pink",
       power_type: "Future Diary",
       weapon_type: "Various",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Yukiteru Amano",
@@ -1302,7 +1014,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Future Diary",
       weapon_type: "Various",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Ken Kaneki",
@@ -1310,7 +1022,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Ghoul Abilities",
       weapon_type: "Kagune",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Rize Kamishiro",
@@ -1318,7 +1030,7 @@ module.exports = {
       hair_color: "Purple",
       power_type: "Ghoul Abilities",
       weapon_type: "Kagune",
-      role: "Antagonist",
+      role: "Antagonist"
     },
     {
       character_name: "Arima Kishou",
@@ -1326,7 +1038,7 @@ module.exports = {
       hair_color: "White",
       power_type: "Combat Skills",
       weapon_type: "Quinque",
-      role: "Antagonist",
+      role: "Antagonist"
     },
     {
       character_name: "Juuzou Suzuya",
@@ -1334,7 +1046,7 @@ module.exports = {
       hair_color: "White",
       power_type: "Combat Skills",
       weapon_type: "Quinque",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Kuroko Tetsuya",
@@ -1342,7 +1054,7 @@ module.exports = {
       hair_color: "Light Blue",
       power_type: "Misdirection",
       weapon_type: "Basketball",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Aomine Daiki",
@@ -1350,7 +1062,7 @@ module.exports = {
       hair_color: "Dark Blue",
       power_type: "Zone",
       weapon_type: "Basketball",
-      role: "Antagonist",
+      role: "Antagonist"
     },
     {
       character_name: "Kagami Taiga",
@@ -1358,7 +1070,7 @@ module.exports = {
       hair_color: "Red",
       power_type: "Zone",
       weapon_type: "Basketball",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Akashi Seijuro",
@@ -1366,7 +1078,7 @@ module.exports = {
       hair_color: "Red",
       power_type: "Emperor Eye",
       weapon_type: "Basketball",
-      role: "Antagonist",
+      role: "Antagonist"
     },
     {
       character_name: "Kise Ryota",
@@ -1374,7 +1086,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Perfect Copy",
       weapon_type: "Basketball",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Midorima Shintaro",
@@ -1382,7 +1094,7 @@ module.exports = {
       hair_color: "Green",
       power_type: "High Project Three",
       weapon_type: "Basketball",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Murasakibara Atsushi",
@@ -1390,7 +1102,7 @@ module.exports = {
       hair_color: "Purple",
       power_type: "Zone",
       weapon_type: "Basketball",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Shoyo Hinata",
@@ -1398,7 +1110,7 @@ module.exports = {
       hair_color: "Orange",
       power_type: "Jumping Power",
       weapon_type: "Volleyball",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Tobio Kageyama",
@@ -1406,7 +1118,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Precision Setting",
       weapon_type: "Volleyball",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Koshi Sugawara",
@@ -1414,7 +1126,7 @@ module.exports = {
       hair_color: "Grey",
       power_type: "Game Sense",
       weapon_type: "Volleyball",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Asuka Langley Soryu",
@@ -1422,7 +1134,7 @@ module.exports = {
       hair_color: "Red",
       power_type: "EVA Pilot",
       weapon_type: "EVA Unit 02",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Rei Ayanami",
@@ -1430,7 +1142,7 @@ module.exports = {
       hair_color: "Blue",
       power_type: "EVA Pilot",
       weapon_type: "EVA Unit 00",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Shinji Ikari",
@@ -1438,7 +1150,7 @@ module.exports = {
       hair_color: "Brown",
       power_type: "EVA Pilot",
       weapon_type: "EVA Unit 01",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Ymir",
@@ -1446,7 +1158,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Titan Shifter",
       weapon_type: "Jaw Titan",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Pieck Finger",
@@ -1454,7 +1166,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Titan Shifter",
       weapon_type: "Cart Titan",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Gabi Braun",
@@ -1462,7 +1174,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Marksmanship",
       weapon_type: "Rifle",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Falco Grice",
@@ -1470,7 +1182,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Titan Shifter",
       weapon_type: "Jaw Titan",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Shigaraki Nana",
@@ -1478,7 +1190,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Quirk (Float)",
       weapon_type: "Combat Skills",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Mirio Togata",
@@ -1486,7 +1198,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Quirk (Permeation)",
       weapon_type: "Combat Skills",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Tamaki Amajiki",
@@ -1494,7 +1206,7 @@ module.exports = {
       hair_color: "Dark Blue",
       power_type: "Quirk (Manifest)",
       weapon_type: "Food",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Lucy",
@@ -1502,7 +1214,7 @@ module.exports = {
       hair_color: "Pink",
       power_type: "Cybernetic Enhancement",
       weapon_type: "Various",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "David Martinez",
@@ -1510,7 +1222,7 @@ module.exports = {
       hair_color: "Brown",
       power_type: "Cybernetic Enhancement",
       weapon_type: "Various",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Rebecca",
@@ -1518,7 +1230,7 @@ module.exports = {
       hair_color: "Pink",
       power_type: "Cybernetic Enhancement",
       weapon_type: "Guns",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Maine",
@@ -1526,7 +1238,7 @@ module.exports = {
       hair_color: "None",
       power_type: "Cybernetic Enhancement",
       weapon_type: "Cybernetic Arms",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Yuta Okkotsu",
@@ -1534,7 +1246,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Cursed Technique",
       weapon_type: "Cursed Energy",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Mei Mei",
@@ -1542,7 +1254,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Cursed Technique",
       weapon_type: "Bird Control",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Suguru Geto",
@@ -1550,7 +1262,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Cursed Technique",
       weapon_type: "Cursed Spirits",
-      role: "Antagonist",
+      role: "Antagonist"
     },
     {
       character_name: "Toge Inumaki",
@@ -1558,7 +1270,7 @@ module.exports = {
       hair_color: "Grey",
       power_type: "Cursed Speech",
       weapon_type: "Voice",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Tengen Uzui",
@@ -1566,7 +1278,7 @@ module.exports = {
       hair_color: "White",
       power_type: "Breathing Techniques",
       weapon_type: "Dual Nichirin Swords",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Muichiro Tokito",
@@ -1574,7 +1286,7 @@ module.exports = {
       hair_color: "Green",
       power_type: "Breathing Techniques",
       weapon_type: "Nichirin Sword",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Mitsuri Kanroji",
@@ -1582,7 +1294,7 @@ module.exports = {
       hair_color: "Pink",
       power_type: "Breathing Techniques",
       weapon_type: "Nichirin Sword",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Obanai Iguro",
@@ -1590,7 +1302,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Breathing Techniques",
       weapon_type: "Nichirin Sword",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Gyomei Himejima",
@@ -1598,7 +1310,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Breathing Techniques",
       weapon_type: "Nichirin Axe and Ball",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Sanemi Shinazugawa",
@@ -1606,7 +1318,7 @@ module.exports = {
       hair_color: "White",
       power_type: "Breathing Techniques",
       weapon_type: "Nichirin Sword",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Akaza",
@@ -1614,7 +1326,7 @@ module.exports = {
       hair_color: "Pink",
       power_type: "Demon Powers",
       weapon_type: "Blood Demon Art",
-      role: "Antagonist",
+      role: "Antagonist"
     },
     {
       character_name: "Kokushibo",
@@ -1622,7 +1334,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Demon Powers",
       weapon_type: "Blood Demon Art",
-      role: "Antagonist",
+      role: "Antagonist"
     },
     {
       character_name: "Daki",
@@ -1630,7 +1342,7 @@ module.exports = {
       hair_color: "White",
       power_type: "Demon Powers",
       weapon_type: "Blood Demon Art",
-      role: "Antagonist",
+      role: "Antagonist"
     },
     {
       character_name: "Gyutaro",
@@ -1638,7 +1350,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Demon Powers",
       weapon_type: "Blood Demon Art",
-      role: "Antagonist",
+      role: "Antagonist"
     },
     {
       character_name: "Kaori Miyazono",
@@ -1646,7 +1358,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Musical Talent",
       weapon_type: "Violin",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Kousei Arima",
@@ -1654,7 +1366,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Musical Talent",
       weapon_type: "Piano",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Shirase Kobuchizawa",
@@ -1662,7 +1374,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Determination",
       weapon_type: "None",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Mari Tamaki",
@@ -1670,7 +1382,7 @@ module.exports = {
       hair_color: "Brown",
       power_type: "None",
       weapon_type: "None",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Shouko Nishimiya",
@@ -1678,7 +1390,7 @@ module.exports = {
       hair_color: "Brown",
       power_type: "None",
       weapon_type: "None",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Shouya Ishida",
@@ -1686,7 +1398,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "None",
       weapon_type: "None",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Mitsuha Miyamizu",
@@ -1694,7 +1406,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Body Switching",
       weapon_type: "None",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Taki Tachibana",
@@ -1702,7 +1414,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Body Switching",
       weapon_type: "None",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Hina Amano",
@@ -1710,7 +1422,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Weather Manipulation",
       weapon_type: "None",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Hodaka Morishima",
@@ -1718,7 +1430,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "None",
       weapon_type: "None",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Riko",
@@ -1726,7 +1438,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "None",
       weapon_type: "Various Tools",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Reg",
@@ -1734,7 +1446,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Robot Powers",
       weapon_type: "Incinerator",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Nanachi",
@@ -1742,7 +1454,7 @@ module.exports = {
       hair_color: "White",
       power_type: "Enhanced Senses",
       weapon_type: "Knowledge",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Bondrewd",
@@ -1750,7 +1462,7 @@ module.exports = {
       hair_color: "None",
       power_type: "Artifacts",
       weapon_type: "Various",
-      role: "Antagonist",
+      role: "Antagonist"
     },
     {
       character_name: "Phosphophyllite",
@@ -1758,7 +1470,7 @@ module.exports = {
       hair_color: "Green",
       power_type: "Gem Body",
       weapon_type: "None",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Diamond",
@@ -1766,7 +1478,7 @@ module.exports = {
       hair_color: "White",
       power_type: "Gem Body",
       weapon_type: "Sword",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Bort",
@@ -1774,7 +1486,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Gem Body",
       weapon_type: "Sword",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Cinnabar",
@@ -1782,7 +1494,7 @@ module.exports = {
       hair_color: "Red",
       power_type: "Gem Body",
       weapon_type: "Mercury",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Takemichi Hanagaki",
@@ -1790,7 +1502,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Time Leaping",
       weapon_type: "Fist",
-      role: "Protagonist",
+      role: "Protagonist"
     },
     {
       character_name: "Mikey",
@@ -1798,7 +1510,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Combat Skills",
       weapon_type: "Kicks",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Draken",
@@ -1806,7 +1518,7 @@ module.exports = {
       hair_color: "Blonde",
       power_type: "Combat Skills",
       weapon_type: "Fist",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Chifuyu Matsuno",
@@ -1814,7 +1526,7 @@ module.exports = {
       hair_color: "Black",
       power_type: "Combat Skills",
       weapon_type: "Fist",
-      role: "Supporting",
+      role: "Supporting"
     },
     {
       character_name: "Kazutora Hanemiya",
@@ -1822,7 +1534,7 @@ module.exports = {
       hair_color: "Yellow and Black",
       power_type: "Combat Skills",
       weapon_type: "Various",
-      role: "Antagonist",
-    },
+      role: "Antagonist"
+    }
   ],
 };
