@@ -44,7 +44,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
   const [imageUrl, setImageUrl] = React.useState<string>(questionMark);
   const [isImageLoading, setIsImageLoading] = React.useState<boolean>(false);
 
-  console.log("feedback",feedback)
+  // console.log("feedback",feedback)
 
   const fetchCharacterImageFromBackend = async (characterName: string) => {
     try {

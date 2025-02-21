@@ -27,6 +27,7 @@ lerna-debug.log*
 backend/node_modules/
 backend/.env
 backend/.DS_Store
+backend/services
 
 # Frontend
 frontend/node_modules/

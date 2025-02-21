@@ -9,8 +9,8 @@ import {
   CheckCircle,
   XCircle,
   HelpCircle,
-  X, // Add X icon import
-  PartyPopper, // Add PartyPopper
+  X, 
+  PartyPopper, 
 } from "lucide-react";
 
 interface Character {
@@ -56,8 +56,7 @@ axios.defaults.baseURL = "http://localhost:5002";
 
 const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
   const [guess, setGuess] = useState<string>("");
-  const [correctCharacter, setCorrectCharacter] =
-    useState<CorrectCharacter | null>(null);
+  const [correctCharacter, setCorrectCharacter] = useState<CorrectCharacter | null>(null);
   const [matchingCharacters, setMatchingCharacters] = useState<Character[]>([]);
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const [feedback, setFeedback] = useState<Feedback | null>(null);
@@ -320,7 +319,7 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
           {/* Instructions */}
           <div className="text-center mb-4 sm:mb-6">
             <p className="text-sm text-purple-200">
-              {!isPlaying 
+              {!isPlaying  
                 ? "Hit play to get a random anime character and try to guess that character"
                 : "A character has been selected! How quickly can you guess it?"
               }
@@ -358,7 +357,7 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
                 </span>
               </div>
             </button>
-            {showGameStartMessage && isPlaying && (
+            {showGameStartMessage && isPlaying && !isCharacterGuessed &&(
               <p className="text-sm text-purple-300 animate-fadeIn">
                 🎮 Game Started! Take your best guess!
               </p>
