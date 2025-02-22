@@ -7,7 +7,7 @@ export interface Feedback {
 }
 
 export interface CharacterInfo {
-  id: number;
+  mal_id?: number;
   name: string;
   animeName: string;
   hairColor: string;

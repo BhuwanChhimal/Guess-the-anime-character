@@ -327,9 +327,9 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
           </div>
 
           {/* Play/Quit Button */}
-          <div className="flex flex-col items-center gap-3 mb-6 sm:mb-8">
+          <div className="flex flex-col items-center gap-3 mb-6 sm:mb-8 ">
             <button
-              className={`group relative px-8 py-3 rounded-full overflow-hidden ${
+              className={`group cursor-pointer relative px-8 py-3 rounded-full overflow-hidden ${
                 isLoading
                   ? "bg-gray-600 cursor-not-allowed"
                   : isCharacterGuessed

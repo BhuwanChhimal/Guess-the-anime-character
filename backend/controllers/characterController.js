@@ -1,7 +1,7 @@
 const axios = require('axios');
 // const path= require('path');
 
-const {characterDetails} = require('../services/characters_with_mal_ids.js')
+const {characterDetails} = require('../services/characters.js')
 const getRandomCharacter = async (req, res) => {
   try {
     const randomIndex = Math.floor(Math.random() * characterDetails.length);

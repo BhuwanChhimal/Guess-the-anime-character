@@ -47,9 +47,9 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
 
   // console.log("feedback",feedback)
 
-  const fetchCharacterImageFromBackend = async (characterName: string) => {
+  const fetchCharacterImageFromBackend = async (character: string) => {
     try {
-      const response = await axios.get(`/api/characters/character-image/${encodeURIComponent(characterName)}`);
+      const response = await axios.get(`/api/characters/character-image/${encodeURIComponent(character)}`); //character -> mal_id or name
       return response.data.imageUrl;
     } catch (error) {
       console.error("Error fetching image:", error);
@@ -90,7 +90,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
     };
 
     getImage();
-  }, [correctCharacter?.name, feedback]);
+  }, [correctCharacter?.name, feedback, correctCharacter?.mal_id]);
 
   return (
     <div className="w-full max-w-sm h-auto bg-gray-800 rounded-lg overflow-hidden shadow-xl border border-purple-600 font-audiowide transition-all hover:shadow-purple-500/20 transform">
