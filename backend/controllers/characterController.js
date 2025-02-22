@@ -1,16 +1,16 @@
 const axios = require('axios');
 // const path= require('path');
 
-const {characterDetails} = require('../services/utils')
+const {characterDetails} = require('../services/characters_with_mal_ids.js')
 const getRandomCharacter = async (req, res) => {
   try {
     const randomIndex = Math.floor(Math.random() * characterDetails.length);
     const character = characterDetails[randomIndex];
     
-    // Add the character_name to the response
     res.json({
       id: character.id,
-      name: character.character_name, // Make sure this is included
+      name: character.character_name,
+      mal_id: character.mal_id, // Add this line to include mal_id
       animeName: character.anime_name || 'Unknown',
       hairColor: character.hair_color || 'Unknown',
       powerType: character.power_type || 'Unknown',
@@ -87,23 +87,42 @@ const checkGuess = async (req, res) => {
 
 const fetchCharacterImage = async (req, res) => {
   try {
-    const characterName = req.params.name;
-    console.log('Fetching image for character:', characterName); // Debug log
+    const identifier = req.params.identifier;
+    console.log('🔍 Starting image fetch for identifier:', identifier);
 
-    const response = await axios.get(`https://api.jikan.moe/v4/characters?q=${encodeURIComponent(characterName)}`);
-    const characters = response.data.data;
+    // Find character in our database
+    const character = characterDetails.find(c => 
+      c.character_name === identifier || c.mal_id?.toString() === identifier
+    );
 
-    console.log('API Response:', characters.length ? 'Found' : 'Not found'); // Debug log
+    let imageUrl;
+    
+    if (character?.mal_id) {
+      console.log('✨ Found MAL ID:', character.mal_id, 'for character:', character.character_name);
+      // If we have MAL ID, use it directly
+      const response = await axios.get(`https://api.jikan.moe/v4/characters/${character.mal_id}`);
+      imageUrl = response.data.data.images.jpg.image_url;
+      console.log('🎯 Direct MAL ID lookup successful');
+    } else {
+      console.log('🔎 No MAL ID found, searching by name:', identifier);
+      // Fallback to searching by name
+      const response = await axios.get(`https://api.jikan.moe/v4/characters?q=${encodeURIComponent(identifier)}`);
+      const characters = response.data.data;
+      if (characters.length > 0) {
+        imageUrl = characters[0].images.jpg.image_url;
+        console.log('📝 Found image via name search');
+      }
+    }
 
-    if (characters.length > 0) {
-      const imageUrl = characters[0].images.jpg.image_url;
-      console.log('Found image URL:', imageUrl); // Debug log
+    if (imageUrl) {
+      console.log('✅ Successfully found image URL:', imageUrl);
       res.json({ imageUrl });
     } else {
+      console.log('❌ No image found for:', identifier);
       res.status(404).json({ error: 'Character image not found' });
     }
   } catch (error) {
-    console.error('Error fetching character image:', error);
+    console.error('🚫 Error fetching character image:', error.message);
     res.status(500).json({ error: 'Failed to fetch character image' });
   }
 };

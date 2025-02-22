@@ -19,6 +19,7 @@ interface CharacterCardProps {
   };
   correctCharacter: {
     name: string;
+    mal_id:number;
     animeName: string;
     hairColor: string;
     powerType: string;
@@ -49,7 +50,6 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
   const fetchCharacterImageFromBackend = async (characterName: string) => {
     try {
       const response = await axios.get(`/api/characters/character-image/${encodeURIComponent(characterName)}`);
-    
       return response.data.imageUrl;
     } catch (error) {
       console.error("Error fetching image:", error);
@@ -64,12 +64,23 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
       if (feedback?.animeName && feedback?.hairColor && feedback?.powerType && feedback?.role && feedback?.weaponType) {
         setIsImageLoading(true);
         try {
-          const url = await fetchCharacterImageFromBackend(correctCharacter.name);
+          // Log the character details for debugging
+          console.log('🔍 Character details:', {
+            name: correctCharacter.name,
+            mal_id: correctCharacter.mal_id
+          });
+
+          // Use MAL ID if available, otherwise use name
+          const identifier = correctCharacter.mal_id ? correctCharacter.mal_id.toString() : correctCharacter.name;
+          console.log('🎮 Using identifier:', identifier, 'Type:', correctCharacter.mal_id ? 'MAL ID' : 'Name');
+          
+          const url = await fetchCharacterImageFromBackend(identifier);
           if (url) {
+            console.log('✅ Image URL received:', url);
             setImageUrl(url);
           }
         } catch (error) {
-          console.error('Error in getImage:', error);
+          console.error('❌ Error in getImage:', error);
         } finally {
           setIsImageLoading(false);
         }

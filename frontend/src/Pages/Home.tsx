@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Main from "../components/Main";
 import CharacterCard from "../components/CharacterCard";
 import { Feedback, CharacterInfo } from "../types";
