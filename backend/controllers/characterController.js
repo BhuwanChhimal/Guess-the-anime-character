@@ -58,7 +58,6 @@ const checkGuess = async (req, res) => {
   const { guessedCharacterName, correctCharacter } = req.body;
 
   try {
-    // Find the guessed character from local dataset by name
     const guessedCharacter = characterDetails.find(
       character => character.character_name?.toLowerCase() === guessedCharacterName?.toLowerCase()
     );
@@ -67,18 +66,19 @@ const checkGuess = async (req, res) => {
       return res.status(404).json({ error: 'Guessed character not found' });
     }
 
-    // Compare attributes
+    // Check if the character name matches exactly
+    const isExactMatch = guessedCharacterName?.toLowerCase() === correctCharacter.name?.toLowerCase();
+
+    // Compare other attributes
     const feedback = {
       animeName: correctCharacter.animeName?.toLowerCase() === guessedCharacter.anime_name?.toLowerCase(),
-      // gender: correctCharacter.gender?.toLowerCase() === guessedCharacter.gender?.toLowerCase(),
       hairColor: correctCharacter.hairColor?.toLowerCase() === guessedCharacter.hair_color?.toLowerCase(),
       powerType: correctCharacter.powerType?.toLowerCase() === guessedCharacter.power_type?.toLowerCase(),
       weaponType: correctCharacter.weaponType?.toLowerCase() === guessedCharacter.weapon_type?.toLowerCase(),
       role: correctCharacter.role?.toLowerCase() === guessedCharacter.role?.toLowerCase(),
-      // species: correctCharacter.species?.toLowerCase() === guessedCharacter.species?.toLowerCase()
     };
 
-    res.json({ feedback });
+    res.json({ feedback, isExactMatch });
   } catch (error) {
     console.error('Error checking guess:', error);
     res.status(500).json({ error: 'Failed to check guess' });

@@ -84,6 +84,7 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
     weaponType: false,
     role: false,
   });
+  const [selectedIndex, setSelectedIndex] = useState<number>(-1);
 
   // Add this function to track cumulative correct guesses
   const updateCumulativeCorrect = (newFeedback: Feedback) => {
@@ -132,11 +133,14 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
   };
 
   const handleStartPlay = async (): Promise<void> => {
+    // Reset all game states
     setHintState({ isVisible: false, hint: null });
     setIsLoading(true);
     setGameStartAnimation(true);
     setFeedbackHistory([]);
     setPlayButtonText("LOADING...");
+    setIsCharacterGuessed(false);
+    setIsCharacterGuessedCorrectly(false);
     setCumulativeCorrect({
       animeName: false,
       hairColor: false,
@@ -191,6 +195,7 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
   ): Promise<void> => {
     const value = e.target.value;
     setGuess(value);
+    setSelectedIndex(-1); // Reset selection when typing
 
     if (value.trim() === "") {
       setMatchingCharacters([]);
@@ -214,53 +219,51 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
     return Object.values(feedbackObj).every((value) => value === true);
   };
 
-  const handleSubmit = async (
-    e: React.FormEvent<HTMLFormElement>
-  ): Promise<void> => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
-
+  
     if (!correctCharacter) {
       alert('Please start the game by clicking "Play" first.');
       return;
     }
-
+  
     setIsLoading(true);
-
+  
     try {
-      const res = await axios.post<{ feedback: Feedback }>(
+      const res = await axios.post<{ feedback: Feedback; isExactMatch: boolean }>(
         "/api/characters/guess",
         {
           guessedCharacterName: guess,
           correctCharacter,
         }
       );
-
+  
       // Update cumulative correct guesses
       updateCumulativeCorrect(res.data.feedback);
-
+  
       // Create new feedback entry
       const newFeedbackEntry: FeedbackEntry = {
         feedback: res.data.feedback,
         guessedName: guess,
         timestamp: Date.now(),
       };
-
+  
       // Update feedback history
       setFeedbackHistory((prev) => [newFeedbackEntry, ...prev]);
       setFeedback(res.data.feedback);
       setAttempts((prev) => prev + 1);
-
-      // Check if all feedback is correct
-      const isAllCorrectGuess = isAllCorrect(res.data.feedback);
+  
+      // Check if all feedback is correct AND it's the exact character match
+      const isAllCorrectGuess = isAllCorrect(res.data.feedback) && res.data.isExactMatch;
       setIsCharacterGuessedCorrectly(isAllCorrectGuess);
       setIsCharacterGuessed(isAllCorrectGuess);
-
-      // Update play button text if character is guessed correctly
+  
+      // Keep the game in playing state even after correct guess
       if (isAllCorrectGuess) {
         setPlayButtonText("PLAY AGAIN");
-        setIsPlaying(false);
+        // Don't set isPlaying to false here
       }
-
+  
       if (correctCharacter) {
         handleFeedback(res.data.feedback, correctCharacter);
       }
@@ -296,6 +299,40 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
 
     setCumulativeCorrect(newCumulative);
     onFeedbackUpdate(feedback, character, newCumulative);
+  };
+
+  // Add new handler for keyboard navigation
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!showDropdown || matchingCharacters.length === 0) return;
+
+    switch (e.key) {
+      case 'ArrowDown':
+        e.preventDefault();
+        setSelectedIndex(prev => 
+          prev < matchingCharacters.length - 1 ? prev + 1 : prev
+        );
+        if (selectedIndex + 1 < matchingCharacters.length) {
+          setGuess(matchingCharacters[selectedIndex + 1].name);
+        }
+        break;
+      case 'ArrowUp':
+        e.preventDefault();
+        setSelectedIndex(prev => (prev > 0 ? prev - 1 : 0));
+        if (selectedIndex > 0) {
+          setGuess(matchingCharacters[selectedIndex - 1].name);
+        }
+        break;
+      case 'Enter':
+        e.preventDefault();
+        if (selectedIndex >= 0) {
+          handleCharacterSelect(matchingCharacters[selectedIndex]);
+        }
+        break;
+      case 'Escape':
+        setShowDropdown(false);
+        setSelectedIndex(-1);
+        break;
+    }
   };
 
   return (
@@ -352,7 +389,7 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
                   : "bg-gradient-to-r from-purple-600 to-purple-800 hover:shadow-lg hover:shadow-purple-500/30 transform hover:scale-105"
               } transition-all duration-300`}
               onClick={
-                isPlaying
+                isPlaying && !isCharacterGuessed
                   ? handleQuit
                   : !isLoading
                   ? handleStartPlay
@@ -399,17 +436,22 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
                   type="text"
                   value={guess}
                   onChange={handleInputChange}
+                  onKeyDown={handleKeyDown}
                   placeholder="Enter any anime character..."
                   className="w-full outline-0 pl-10 pr-4 py-3 rounded-lg bg-gray-700 border border-purple-600 text-sm text-white placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                   disabled={isLoading || !isPlaying || isCharacterGuessedCorrectly}
                 />
                 {showDropdown && matchingCharacters.length > 0 && (
                   <div className="absolute top-full left-0 w-full bg-gray-800 rounded-md shadow-lg z-50 mt-1 border border-purple-600 max-h-48 overflow-y-auto">
-                    {matchingCharacters.map((character) => (
+                    {matchingCharacters.map((character, index) => (
                       <div
                         key={character.mal_id}
                         onClick={() => handleCharacterSelect(character)}
-                        className="p-3 hover:bg-purple-900 cursor-pointer border-b border-purple-700 border-opacity-30 text-white"
+                        className={`p-3 cursor-pointer border-b border-purple-700 border-opacity-30 text-white ${
+                          index === selectedIndex
+                            ? "bg-purple-900 bg-opacity-50"
+                            : "hover:bg-purple-900"
+                        }`}
                       >
                         <div className="font-medium">{character.name}</div>
                         <div className="text-xs font-extralight text-gray-400 ml-4">
