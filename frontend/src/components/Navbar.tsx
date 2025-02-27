@@ -1,10 +1,17 @@
+import { useNavigate } from 'react-router-dom'
 import navlogo from '../assets/Ninja Head.png'
 import userlogo from '../assets/User.png'
 
 function Navbar() {
+  const navigate = useNavigate()
+  function handleLogoClick(){
+    navigate('/')
+  }
   return (
     <div className="flex justify-between px-4 sm:mx-8 py-4 items-center  text-white font-audiowide">
-        <div className='left flex items-center gap-2 sm:gap-4'>
+        <div className='left flex items-center gap-2 sm:gap-4 cursor-pointer'
+          onClick={handleLogoClick}
+        >
             <img src={navlogo} alt="logo" className="w-8 h-8 sm:w-auto sm:h-auto" />
             <h1 className='text-transparent text-lg sm:text-2xl font-bold bg-clip-text bg-gradient-to-r from-purple-400 to-pink-300'>GUESS THE ANIME CHARACTER</h1>
         </div>
