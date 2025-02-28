@@ -59,7 +59,8 @@ axios.defaults.baseURL = "http://localhost:5002";
 
 const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
   const [guess, setGuess] = useState<string>("");
-  const [correctCharacter, setCorrectCharacter] = useState<CorrectCharacter | null>(null);
+  const [correctCharacter, setCorrectCharacter] =
+    useState<CorrectCharacter | null>(null);
   const [matchingCharacters, setMatchingCharacters] = useState<Character[]>([]);
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const [feedback, setFeedback] = useState<Feedback | null>(null);
@@ -75,8 +76,9 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
   const [playButtonText, setPlayButtonText] = useState<string>("PLAY");
   const [showGameStartMessage, setShowGameStartMessage] =
     useState<boolean>(false);
-    const [isCharacterGuessed, setIsCharacterGuessed] = useState<boolean>(false);
-    const [isCharacterGuessedCorrectly, setIsCharacterGuessedCorrectly] = useState<boolean>(false);
+  const [isCharacterGuessed, setIsCharacterGuessed] = useState<boolean>(false);
+  const [isCharacterGuessedCorrectly, setIsCharacterGuessedCorrectly] =
+    useState<boolean>(false);
   const [cumulativeCorrect, setCumulativeCorrect] = useState<Feedback>({
     animeName: false,
     hairColor: false,
@@ -219,51 +221,54 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
     return Object.values(feedbackObj).every((value) => value === true);
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ): Promise<void> => {
     e.preventDefault();
-  
+
     if (!correctCharacter) {
       alert('Please start the game by clicking "Play" first.');
       return;
     }
-  
+
     setIsLoading(true);
-  
+
     try {
-      const res = await axios.post<{ feedback: Feedback; isExactMatch: boolean }>(
-        "/api/characters/guess",
-        {
-          guessedCharacterName: guess,
-          correctCharacter,
-        }
-      );
-  
+      const res = await axios.post<{
+        feedback: Feedback;
+        isExactMatch: boolean;
+      }>("/api/characters/guess", {
+        guessedCharacterName: guess,
+        correctCharacter,
+      });
+
       // Update cumulative correct guesses
       updateCumulativeCorrect(res.data.feedback);
-  
+
       // Create new feedback entry
       const newFeedbackEntry: FeedbackEntry = {
         feedback: res.data.feedback,
         guessedName: guess,
         timestamp: Date.now(),
       };
-  
+
       // Update feedback history
       setFeedbackHistory((prev) => [newFeedbackEntry, ...prev]);
       setFeedback(res.data.feedback);
       setAttempts((prev) => prev + 1);
-  
+
       // Check if all feedback is correct AND it's the exact character match
-      const isAllCorrectGuess = isAllCorrect(res.data.feedback) && res.data.isExactMatch;
+      const isAllCorrectGuess =
+        isAllCorrect(res.data.feedback) && res.data.isExactMatch;
       setIsCharacterGuessedCorrectly(isAllCorrectGuess);
       setIsCharacterGuessed(isAllCorrectGuess);
-  
+
       // Keep the game in playing state even after correct guess
       if (isAllCorrectGuess) {
         setPlayButtonText("PLAY AGAIN");
         // Don't set isPlaying to false here
       }
-  
+
       if (correctCharacter) {
         handleFeedback(res.data.feedback, correctCharacter);
       }
@@ -306,29 +311,29 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
     if (!showDropdown || matchingCharacters.length === 0) return;
 
     switch (e.key) {
-      case 'ArrowDown':
+      case "ArrowDown":
         e.preventDefault();
-        setSelectedIndex(prev => 
+        setSelectedIndex((prev) =>
           prev < matchingCharacters.length - 1 ? prev + 1 : prev
         );
         if (selectedIndex + 1 < matchingCharacters.length) {
           setGuess(matchingCharacters[selectedIndex + 1].name);
         }
         break;
-      case 'ArrowUp':
+      case "ArrowUp":
         e.preventDefault();
-        setSelectedIndex(prev => (prev > 0 ? prev - 1 : 0));
+        setSelectedIndex((prev) => (prev > 0 ? prev - 1 : 0));
         if (selectedIndex > 0) {
           setGuess(matchingCharacters[selectedIndex - 1].name);
         }
         break;
-      case 'Enter':
+      case "Enter":
         e.preventDefault();
         if (selectedIndex >= 0) {
           handleCharacterSelect(matchingCharacters[selectedIndex]);
         }
         break;
-      case 'Escape':
+      case "Escape":
         setShowDropdown(false);
         setSelectedIndex(-1);
         break;
@@ -336,7 +341,7 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
   };
 
   return (
-    <div className="h-full flex flex-col bg-gray-800 bg-opacity-90 backdrop-blur-sm rounded-xl shadow-2xl overflow-hidden">
+    <div className="h-full font-audiowide flex flex-col bg-gray-800 bg-opacity-90 backdrop-blur-sm rounded-xl shadow-2xl overflow-hidden">
       {/* Title Section */}
       <div className="bg-gray-900 text-white py-3 sm:py-4 px-4 border-b border-purple-700 shrink-0">
         <h1 className="text-center text-lg sm:text-xl font-bold tracking-widest relative">
@@ -439,7 +444,9 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
                   onKeyDown={handleKeyDown}
                   placeholder="Enter any anime character..."
                   className="w-full outline-0 pl-10 pr-4 py-3 rounded-lg bg-gray-700 border border-purple-600 text-sm text-white placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                  disabled={isLoading || !isPlaying || isCharacterGuessedCorrectly}
+                  disabled={
+                    isLoading || !isPlaying || isCharacterGuessedCorrectly
+                  }
                 />
                 {showDropdown && matchingCharacters.length > 0 && (
                   <div className="absolute top-full left-0 w-full bg-gray-800 rounded-md shadow-lg z-50 mt-1 border border-purple-600 max-h-48 overflow-y-auto">
@@ -469,7 +476,9 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
                     ? "bg-gray-600 cursor-not-allowed"
                     : "bg-purple-600 hover:bg-purple-700"
                 } text-white shadow-md hover:shadow-lg transition-all`}
-                disabled={isLoading || !isPlaying || isCharacterGuessedCorrectly}
+                disabled={
+                  isLoading || !isPlaying || isCharacterGuessedCorrectly
+                }
               >
                 {isLoading ? (
                   <RotateCcw className="animate-spin" size={18} />

@@ -93,7 +93,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
   }, [correctCharacter?.name, feedback, correctCharacter?.mal_id]);
 
   return (
-    <div className="w-full max-w-sm h-auto bg-gray-800 rounded-lg overflow-hidden shadow-xl border border-purple-600 font-audiowide transition-all hover:shadow-purple-500/20 transform">
+    <div className="w-full max-w-sm bg-gray-800 rounded-lg overflow-hidden shadow-xl border border-purple-600 font-audiowide transition-all hover:shadow-purple-500/20 transform">
       {/* Header */}
       <div className="bg-purple-900 p-2 sm:p-3 text-center">
         <h2 className="text-white font-bold relative">
