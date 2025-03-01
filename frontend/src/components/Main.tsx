@@ -15,7 +15,7 @@ import {
 interface Character {
   mal_id: number;
   name: string;
-  anime: string;
+  animeName: string;
 }
 
 interface CorrectCharacter {
@@ -87,7 +87,7 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
     role: false,
   });
   const [selectedIndex, setSelectedIndex] = useState<number>(-1);
-
+  const [hintpresscount, setHintpresscount] = useState<number>(5)
   // Add this function to track cumulative correct guesses
   const updateCumulativeCorrect = (newFeedback: Feedback) => {
     setCumulativeCorrect((prev) => ({
@@ -126,6 +126,7 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
   };
 
   const toggleHint = () => {
+    setHintpresscount(hintpresscount+1)
     if (!hintState.isVisible || !hintState.hint) {
       const newHint = generateHint();
       setHintState({ isVisible: true, hint: newHint });
@@ -191,7 +192,7 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
   const handleQuit = () => {
     window.location.reload();
   };
-
+  
   const handleInputChange = async (
     e: React.ChangeEvent<HTMLInputElement>
   ): Promise<void> => {
@@ -225,7 +226,7 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
     e: React.FormEvent<HTMLFormElement>
   ): Promise<void> => {
     e.preventDefault();
-
+    setHintpresscount(hintpresscount -1)
     if (!correctCharacter) {
       alert('Please start the game by clicking "Play" first.');
       return;
@@ -258,15 +259,13 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
       setAttempts((prev) => prev + 1);
 
       // Check if all feedback is correct AND it's the exact character match
-      const isAllCorrectGuess =
-        isAllCorrect(res.data.feedback) && res.data.isExactMatch;
+      const isAllCorrectGuess = isAllCorrect(res.data.feedback) && res.data.isExactMatch;
       setIsCharacterGuessedCorrectly(isAllCorrectGuess);
       setIsCharacterGuessed(isAllCorrectGuess);
 
       // Keep the game in playing state even after correct guess
       if (isAllCorrectGuess) {
         setPlayButtonText("PLAY AGAIN");
-        // Don't set isPlaying to false here
       }
 
       if (correctCharacter) {
@@ -339,7 +338,7 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
         break;
     }
   };
-
+  // console.log(hintpresscount)
   return (
     <div className="h-full font-audiowide flex flex-col bg-gray-800 bg-opacity-90 backdrop-blur-sm rounded-xl shadow-2xl overflow-hidden">
       {/* Title Section */}
@@ -510,7 +509,7 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
                   </div>
                   <button
                     onClick={toggleHint}
-                    disabled={attempts < 5 || !feedback}
+                    disabled={attempts < 5 || !feedback || hintpresscount > 5}
                     className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm ${
                       attempts >= 5 && feedback
                         ? "bg-purple-600 hover:bg-purple-700 text-white"
