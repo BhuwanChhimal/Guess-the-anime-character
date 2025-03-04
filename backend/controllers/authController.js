@@ -4,9 +4,9 @@ const User = require('../models/User');
 require('dotenv').config();
 
 const register = async (req, res) => {
-  const { email, password } = req.body;
+  const { name, email, password } = req.body;
   try {
-    const user = new User({ email, password });
+    const user = new User({ name, email, password });
     await user.save();
     res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {

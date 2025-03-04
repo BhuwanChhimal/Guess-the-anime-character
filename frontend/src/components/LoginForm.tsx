@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const WaveIcon = () => (
   <svg viewBox="0 0 1440 320" className="absolute bottom-0 left-0 w-full">
     <path fill="#f3f4f6" fillOpacity="0.1" d="M0,128L48,117.3C96,107,192,85,288,90.7C384,96,480,128,576,122.7C672,117,768,75,864,74.7C960,75,1056,117,1152,122.7C1248,128,1344,96,1392,80L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
   </svg>
 );
+axios.defaults.baseURL = "http://localhost:5002";
 
 const LoginForm = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -19,7 +22,9 @@ const LoginForm = () => {
     email: '',
     password: ''
   });
-
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const Navigate = useNavigate()
   // Reset animation if needed
   useEffect(() => {
     if (animationPhase === 2) {
@@ -47,6 +52,49 @@ const LoginForm = () => {
       ...formData,
       [e.target.name]: e.target.value
     });
+  };
+
+  const validateForm = () => {
+    if (!formData.email || !formData.password) {
+      setError('Please fill in all fields');
+      return false;
+    }
+    if (!isLogin && !formData.name) {
+      setError('Please enter your name');
+      return false;
+    }
+    return true;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!validateForm()) return;
+
+    setLoading(true);
+    setError('');
+
+    try {
+      const endpoint = isLogin ? '/api/auth/login' : '/api/auth/register';
+      const response = await axios.post(endpoint, formData);
+
+      if (isLogin) {
+        // Store token in localStorage or your preferred storage method
+        localStorage.setItem('token', response.data.token);
+        Navigate('/')
+        // You might want to redirect or update global auth state here
+      } else {
+        // After successful registration, switch to login
+        setIsLogin(true);
+        setFormData({ ...formData, name: '' });
+      }
+    } catch (error) {
+      setError(
+        error.response?.data?.error || 
+        'An error occurred. Please try again.'
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   // Animated shapes for background
@@ -100,13 +148,18 @@ const LoginForm = () => {
         <div className="flex h-full">
           {/* Login/Signup Form */}
           <div className="w-full md:w-1/2 p-8 z-10 relative mt-10">
-            <h2 className="text-2xl font-bold mb-2">{isLogin ? 'Sign In' : 'Sign Up'}</h2>
+            <h2 className="text-2xl font-bold mb-2">{isLogin ? 'Login' : 'Sign Up'}</h2>
             <p className="text-gray-500 text-sm mb-6">
               {isLogin ? 'Welcome back! Please enter your details' : 'Create an account to get started'}
             </p>
             
             {/* Form Fields */}
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={handleSubmit}>
+              {error && (
+                <div className="bg-red-50 text-red-500 p-3 rounded-lg text-sm">
+                  {error}
+                </div>
+              )}
               {!isLogin && (
                 <div className="relative">
                   <input 
@@ -177,10 +230,23 @@ const LoginForm = () => {
               )}
               
               <button 
-                type="button" 
-                className="w-full bg-gradient-to-r from-purple-600 to-purple-800 text-white py-2.5 rounded-lg hover:opacity-95 transition-all duration-300 transform hover:scale-[0.99] active:scale-[0.97] shadow-md uppercase text-sm font-medium"
+                type="submit"
+                disabled={loading}
+                className={`w-full bg-gradient-to-r from-purple-600 to-purple-800 text-white py-2.5 rounded-lg transition-all duration-300 transform hover:scale-[0.99] active:scale-[0.97] shadow-md uppercase text-sm font-medium ${
+                  loading ? 'opacity-70 cursor-not-allowed' : 'hover:opacity-95'
+                }`}
               >
-                {isLogin ? 'Sign In' : 'Sign Up'}
+                {loading ? (
+                  <span className="flex items-center justify-center">
+                    <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                    </svg>
+                    Processing...
+                  </span>
+                ) : (
+                  isLogin ? 'Sign In' : 'Sign Up'
+                )}
               </button>
             </form>
             
@@ -224,7 +290,7 @@ const LoginForm = () => {
                 onClick={handleToggle}
                 className="border-2 border-white text-white py-2.5 px-8 rounded-full hover:bg-white hover:text-purple-700 transition-all duration-300 uppercase text-sm font-medium"
               >
-                {isLogin ? 'Sign Up' : 'Sign In'}
+                {isLogin ? 'Sign Up' : 'Login'}
               </button>
             </div>
           </div>
