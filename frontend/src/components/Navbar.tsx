@@ -1,23 +1,21 @@
 import { useNavigate } from 'react-router-dom'
 import navlogo from '../assets/Ninja Head.png'
 import userlogo from '../assets/User.png'
-import { useEffect, useState } from 'react'
-import { LogIn, LogOut } from 'lucide-react'
+import { useContext, useState } from 'react'
+import { LogIn, LogOut, User } from 'lucide-react'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { AuthContext } from '../context/AuthContext' // Updated import path
 
 function Navbar() {
   const navigate = useNavigate()
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-
-  useEffect(() => {
-    const token = localStorage.getItem('token')
-    setIsAuthenticated(!!token)
-  }, [])
+  const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext)
+  
+  // Remove the useEffect since auth state is now managed by context
 
   function handleLogoClick() {
     navigate('/')
@@ -54,7 +52,7 @@ function Navbar() {
                 onClick={handleLogout} 
                 className="cursor-pointer text-white focus:bg-purple-600 focus:text-white hover:bg-purple-600 hover:text-white flex items-center gap-2 transition-colors"
               >
-                <LogOut className="h-4 w-4" />
+                <LogOut className="h-4 w-4 text-white" />
                 Logout
               </DropdownMenuItem>
             ) : (
@@ -62,10 +60,17 @@ function Navbar() {
                 onClick={handleLogin} 
                 className="cursor-pointer text-white focus:bg-purple-600 focus:text-white hover:bg-purple-600 hover:text-white flex items-center gap-2 transition-colors"
               >
-                <LogIn className="h-4 w-4" />
+                <LogIn className="h-4 w-4 text-white" />
                 Login
               </DropdownMenuItem>
             )}
+            <DropdownMenuItem 
+              onClick={()=> navigate("/userprofile")} className='cursor-pointer text-white focus:bg-purple-600 focus:text-white hover:bg-purple-600 hover:text-white flex items-center gap-2 transition-colors'
+            >
+              <User className='h-4 w-4 text-white'/>
+                User name
+              
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

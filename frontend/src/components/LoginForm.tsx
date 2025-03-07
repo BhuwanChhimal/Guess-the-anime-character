@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 const WaveIcon = () => (
   <svg viewBox="0 0 1440 320" className="absolute bottom-0 left-0 w-full">
@@ -24,7 +25,8 @@ const LoginForm = () => {
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const Navigate = useNavigate()
+  const { setIsAuthenticated } = useContext(AuthContext);
+  const navigate = useNavigate(); // Changed from Navigate to navigate
   // Reset animation if needed
   useEffect(() => {
     if (animationPhase === 2) {
@@ -78,12 +80,10 @@ const LoginForm = () => {
       const response = await axios.post(endpoint, formData);
 
       if (isLogin) {
-        // Store token in localStorage or your preferred storage method
         localStorage.setItem('token', response.data.token);
-        Navigate('/')
-        // You might want to redirect or update global auth state here
+        setIsAuthenticated(true); // Update auth state directly
+        navigate('/');
       } else {
-        // After successful registration, switch to login
         setIsLogin(true);
         setFormData({ ...formData, name: '' });
       }

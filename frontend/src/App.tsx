@@ -1,18 +1,13 @@
-import LoginForm from "./components/LoginForm";
-import Navbar from "./components/Navbar";
-import Home from "./Pages/Home";
-import { Routes,Route } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+import AppRoutes from "./routes/AppRoutes";
+
 const App = () => {
   return (
- 
+    <AuthProvider>
       <div className="h-screen bg-gradient-to-b from-gray-900 to-purple-900">
-        <Navbar />
-          <Routes>
-            <Route element={<LoginForm/>} path="/login"/>
-            <Route element={<Home/>} path="/"/>
-          </Routes>
+        <AppRoutes />
       </div>
-
+    </AuthProvider>
   );
 };
 
