@@ -10,6 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { AuthContext } from '../context/AuthContext' // Updated import path
+import axios from 'axios'
 
 function Navbar() {
   const navigate = useNavigate()
@@ -30,7 +31,19 @@ function Navbar() {
     setIsAuthenticated(false)
     navigate('/login')
   }
-
+  const getUserName = async () => {
+    try {
+      const response = await axios.get('/api/auth/username', {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+      return response.data.name;
+    } catch (error) {
+      console.error('Error getting user name:', error);
+      return null;
+    }
+  }
   return (
     <div className="flex justify-between px-4 sm:mx-8 py-4 items-center text-white font-audiowide">
       <div className='left flex items-center gap-2 sm:gap-4 cursor-pointer'
@@ -68,8 +81,7 @@ function Navbar() {
               onClick={()=> navigate("/userprofile")} className='cursor-pointer text-white focus:bg-purple-600 focus:text-white hover:bg-purple-600 hover:text-white flex items-center gap-2 transition-colors'
             >
               <User className='h-4 w-4 text-white'/>
-                User name
-              
+              {getUserName()}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
