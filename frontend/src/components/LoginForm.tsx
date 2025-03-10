@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import naruto from '../assets/naruto.png';
+import {Eye, EyeOff} from 'lucide-react';
 
 const WaveIcon = () => (
   <svg viewBox="0 0 1440 320" className="absolute bottom-0 left-0 w-full">
@@ -25,6 +27,7 @@ const LoginForm = () => {
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [isPasswordHidden, setIsPasswordHidden] = useState(true)
   const { setIsAuthenticated } = useContext(AuthContext);
   const navigate = useNavigate(); // Changed from Navigate to navigate
   // Reset animation if needed
@@ -198,7 +201,7 @@ const LoginForm = () => {
               
               <div className="relative">
                 <input 
-                  type="password"
+                  type={isPasswordHidden ? 'password' : 'text'}
                   name="password"
                   value={formData.password}
                   onChange={handleInputChange}
@@ -211,6 +214,12 @@ const LoginForm = () => {
                       : 'border-gray-300'
                   }`}
                 />
+                {isPasswordHidden ? (
+                  <Eye className='absolute top-3 right-2 transition-all duration-200' onClick={() => setIsPasswordHidden(false)}/>
+
+                ):(
+                  <EyeOff className='absolute top-3 right-2 transition-all duration-200' onClick={() => setIsPasswordHidden(true)}/>
+                )}
               </div>
               
               {isLogin && (
@@ -264,10 +273,10 @@ const LoginForm = () => {
               </p>
             </div>
           </div>
-          
           {/* Right purple panel */}
           <div className="hidden md:flex md:w-1/2 bg-gradient-to-br from-purple-600 to-purple-800 text-white items-center justify-center z-10 relative overflow-hidden">
             <WaveIcon />
+          <img src={naruto} alt="naruto-img" className='h-[50%] absolute -left-5'/>
             
             <div className="text-center p-10 relative z-10">
               <div className="h-24 w-24 rounded-full bg-purple-500 bg-opacity-30 mx-auto mb-4 flex items-center justify-center">

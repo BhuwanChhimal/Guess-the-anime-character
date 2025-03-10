@@ -81,7 +81,7 @@ function Navbar() {
               onClick={()=> navigate("/userprofile")} className='cursor-pointer text-white focus:bg-purple-600 focus:text-white hover:bg-purple-600 hover:text-white flex items-center gap-2 transition-colors'
             >
               <User className='h-4 w-4 text-white'/>
-              {getUserName()}
+              {getUserName() || 'User'}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
