@@ -17,7 +17,8 @@ interface Character {
   name: string;
   animeName: string;
 }
-
+import smallLuffy from "../assets/smolLuffy.png";
+import smallNaruto from "../assets/smolNaruto.png";
 interface CorrectCharacter {
   id: number;
   name: string;
@@ -421,7 +422,8 @@ const Main: React.FC<MainProps> = ({ onFeedbackUpdate }) => {
               </p>
             )}
           </div>
-
+          <img src={smallLuffy} className="w-24 aspect-auto absolute top-10 -left-8 rotate-45 hidden md:block" alt="" />
+          <img src={smallNaruto} className="w-24 aspect-auto absolute top-35 -right-8 -rotate-45 hidden md:block" alt="" />
           {/* Guess Input Section */}
           <div className="mb-6">
             <p className="mb-2 text-purple-200 font-semibold">

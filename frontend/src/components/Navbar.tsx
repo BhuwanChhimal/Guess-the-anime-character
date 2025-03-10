@@ -60,6 +60,12 @@ function Navbar() {
             <img src={userlogo} className='w-8 h-8 sm:w-12 sm:h-12 rounded-full' alt="user-logo" />
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-40 bg-purple-700 border-none">
+          <DropdownMenuItem 
+              onClick={()=> navigate("/userprofile")} className='cursor-pointer text-white focus:bg-purple-600 focus:text-white hover:bg-purple-600 hover:text-white flex items-center gap-2 transition-colors'
+            >
+              <User className='h-4 w-4 text-white'/>
+              {getUserName() || 'User'}
+            </DropdownMenuItem>
             {isAuthenticated ? (
               <DropdownMenuItem 
                 onClick={handleLogout} 
@@ -77,12 +83,7 @@ function Navbar() {
                 Login
               </DropdownMenuItem>
             )}
-            <DropdownMenuItem 
-              onClick={()=> navigate("/userprofile")} className='cursor-pointer text-white focus:bg-purple-600 focus:text-white hover:bg-purple-600 hover:text-white flex items-center gap-2 transition-colors'
-            >
-              <User className='h-4 w-4 text-white'/>
-              {getUserName() || 'User'}
-            </DropdownMenuItem>
+           
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
