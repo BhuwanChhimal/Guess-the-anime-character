@@ -28,8 +28,8 @@ const SignupForm: React.FC<SignupFormProps> = ({ onToggle }) => {
     try {
       await signup(formData.name, formData.email, formData.password);
       navigate('/');
-    } catch (err) {
-      setError('Registration failed');
+    } catch (err: any) {
+      setError(err.message || 'Registration failed');
     } finally {
       setLoading(false);
     }

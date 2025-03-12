@@ -6,9 +6,9 @@ interface LoginData {
 }
 
 interface SignupData {
+  name: string;  // changed from username to name to match backend
   email: string;
   password: string;
-  username: string;
 }
 
 export const authService = {
@@ -30,7 +30,11 @@ export const authService = {
 
   signup: async (data: SignupData): Promise<string> => {
     try {
-      const response = await axiosInstance.post('/api/auth/register', data);
+      const response = await axiosInstance.post('/api/auth/register', {
+        name: data.name,
+        email: data.email,
+        password: data.password
+      });
       if (response.data && response.data.token) {
         localStorage.setItem('token', response.data.token);
         axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
