@@ -1,9 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import userlogo from "../assets/avatar.png";
 import { UserRoundPen } from "lucide-react";
-import smallLuffy from "../assets/smolLuffy.png";
-import smallNaruto from "../assets/smolNaruto.png";
+import { getUserName } from "../constants/getUserName";
+
 const UserProfile = () => {
+  const [username, setUsername] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchUsername = async () => {
+      try {
+        const name = await getUserName();
+        setUsername(name);
+      } catch (error) {
+        console.error('Error fetching username:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchUsername();
+  }, []);
+
+  // Show loading state
+  if (isLoading) {
+    return (
+      <div className="min-h-[calc(100vh-10rem)] pt-16 flex items-center justify-center bg-gradient-to-b from-gray-900 to-purple-900">
+        <div className="text-white text-xl">Loading...</div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-[calc(100vh-10rem)] pt-16 flex items-start bg-gradient-to-b from-gray-900 to-purple-900 ">
       <div className="w-full max-w-4xl mx-auto p-4">
@@ -28,8 +55,7 @@ const UserProfile = () => {
           <div className="pt-14 pb-4 px-4 space-y-6">
             {/* User Info */}
             <div className="text-center font-audiowide">
-              <h1 className="text-2xl text-white font-bold">Username</h1>
-              <p className="text-white/70">@userhandle</p>
+              <h1 className="text-2xl text-white font-bold">{username || 'Guest'}</h1>
 
             </div>
             <div className="bg-white w-full h-0.5"/>

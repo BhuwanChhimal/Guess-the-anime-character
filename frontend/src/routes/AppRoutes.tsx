@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import Navbar from "../components/Navbar";
 import Home from "../Pages/Home";
-import LoginForm from "../components/LoginForm";
+import { AuthWrapper } from "../components/auth/AuthWrapper";
 import UserProfile from "../Pages/UserProfile";
 
 const ProtectedRoute = ({ children }) => {
@@ -23,7 +23,7 @@ const AppRoutes = () => {
       <Routes>
         <Route
           path="/login"
-          element={isAuthenticated ? <Navigate to="/" replace /> : <LoginForm />}
+          element={isAuthenticated ? <Navigate to="/" replace /> : <AuthWrapper />}
         />
         <Route
           path="/"
