@@ -30,11 +30,7 @@ export const authService = {
 
   signup: async (data: SignupData): Promise<string> => {
     try {
-      const response = await axiosInstance.post('/api/auth/register', {
-        name: data.name,
-        email: data.email,
-        password: data.password
-      });
+      const response = await axiosInstance.post('/api/auth/register', data);
       if (response.data && response.data.token) {
         localStorage.setItem('token', response.data.token);
         axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
