@@ -30,8 +30,8 @@ export const AuthWrapper = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh - 5rem)] flex items-center justify-center p-4">
-      <div className="w-full max-w-4xl relative ">
+    <div className="min-h-[calc(100vh-5rem)] flex items-center justify-center p-4">
+      <div className="w-full max-w-4xl relative min-h-[32rem]">
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
             key={isLogin ? "login" : "signup"}
@@ -44,7 +44,7 @@ export const AuthWrapper = () => {
               x: { type: "spring", stiffness: 300, damping: 30 },
               opacity: { duration: 0.2 }
             }}
-            className="absolute w-full top-40"
+            className="absolute inset-0 w-full"
           >
             {isLogin ? (
               <LoginForm onToggle={toggleForm} />

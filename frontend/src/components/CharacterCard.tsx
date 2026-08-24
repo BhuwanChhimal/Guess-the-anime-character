@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import questionMark from "../assets/question-mark.png";
-import { Loader2 } from "lucide-react"; // Add this import at the top with other imports
+import { Loader2, Lock } from "lucide-react"; // Add this import at the top with other imports
 interface CharacterCardProps {
   feedback: {
     animeName: boolean;
@@ -29,11 +29,17 @@ interface CharacterCardProps {
 }
 axios.defaults.baseURL = "http://localhost:5002";
 const InfoRow = ({ label, value, isRevealed }: { label: string; value: string; isRevealed: boolean }) => (
-  <div className="flex justify-between items-center py-1 border-b border-purple-700 border-opacity-30">
-    <span className="text-purple-200">{label}:</span>
-    <span className={`text-white font-medium ${isRevealed ? 'text-green-400' : ''}`}>
-      {isRevealed ? value : '??'}
-    </span>
+  <div className="flex justify-between items-center gap-3 py-1.5 border-b border-white/5 last:border-none">
+    <span className="text-slate-400 text-sm">{label}</span>
+    {isRevealed ? (
+      <span className="text-emerald-400 font-medium text-sm text-right animate-reveal">
+        {value}
+      </span>
+    ) : (
+      <span className="flex items-center gap-1 text-slate-500 text-sm">
+        <Lock size={12} /> Hidden
+      </span>
+    )}
   </div>
 );
 
@@ -92,35 +98,50 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
     getImage();
   }, [correctCharacter?.name, feedback, correctCharacter?.mal_id]);
 
+  const revealedCount =
+    Object.values(cumulativeCorrect).filter(Boolean).length;
+
   return (
-    <div className="w-full max-w-sm bg-gray-800 rounded-lg overflow-hidden shadow-xl border border-purple-600 font-audiowide transition-all hover:shadow-purple-500/20 transform">
+    <div className="w-full max-w-sm surface rounded-2xl overflow-hidden">
       {/* Header */}
-      <div className="bg-purple-900 p-2 sm:p-3 text-center">
-        <h2 className="text-white font-bold relative">
-          <span className="absolute inset-0 flex items-center justify-center blur-sm text-purple-300">The character is...</span>
-          <span className="relative">The character is...</span>
+      <div className="px-4 py-3 text-center border-b border-white/10">
+        <h2 className="font-display text-gradient font-bold tracking-wide">
+          The character is...
         </h2>
       </div>
 
       {/* Character Image */}
-      <div className="p-4 sm:p-6 flex justify-center">
-        <div className="w-32 h-32 sm:w-40 sm:h-40 bg-gray-700 rounded-full overflow-hidden border-4 border-purple-500 shadow-lg shadow-purple-500/40 transition-all relative">
+      <div className="p-5 sm:p-6 flex flex-col items-center gap-3">
+        <div className="w-32 h-32 sm:w-36 sm:h-36 bg-white/5 rounded-full overflow-hidden ring-2 ring-white/15 shadow-lg relative">
           {isImageLoading ? (
-            <div className="absolute inset-0 flex items-center justify-center bg-gray-800">
-              <Loader2 className="w-8 h-8 text-purple-500 animate-spin" />
+            <div className="absolute inset-0 flex items-center justify-center bg-white/5">
+              <Loader2 className="w-8 h-8 text-violet-400 animate-spin" />
             </div>
           ) : (
             <img
               src={imageUrl}
               alt="character"
-              className="w-full h-full object-cover opacity-80"
+              className="w-full h-full object-cover"
             />
           )}
+        </div>
+        {/* Reveal progress */}
+        <div className="w-full max-w-[12rem]">
+          <div className="flex justify-between text-[11px] text-slate-400 mb-1">
+            <span>Clues revealed</span>
+            <span>{revealedCount}/5</span>
+          </div>
+          <div className="h-1.5 rounded-full bg-white/10 overflow-hidden">
+            <div
+              className="h-full rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 transition-all duration-500"
+              style={{ width: `${(revealedCount / 5) * 100}%` }}
+            />
+          </div>
         </div>
       </div>
 
       {/* Character Info */}
-      <div className="p-3 sm:p-5 space-y-2 bg-gray-900 mx-3 sm:mx-4 rounded-lg mb-4 sm:mb-5 shadow-inner">
+      <div className="px-4 py-3 space-y-1 surface-muted mx-4 rounded-xl mb-5">
         <InfoRow 
           label="Anime Name" 
           value={correctCharacter?.animeName || '??'}

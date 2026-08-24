@@ -11,6 +11,11 @@ interface SignupData {
   password: string;
 }
 
+interface UpdateProfileData {
+  profilePic?: string;
+  name?: string;
+}
+
 export const authService = {
   login: async (data: LoginData): Promise<string> => {
     try {
@@ -46,5 +51,20 @@ export const authService = {
   logout: () => {
     localStorage.removeItem('token');
     delete axiosInstance.defaults.headers.common['Authorization'];
+  },
+
+  updateProfile: async (data: UpdateProfileData): Promise<string | undefined> => {
+    try {
+      const response = await axiosInstance.put('/api/auth/update-profile', data);
+      if(response.data && response.data.token){
+        localStorage.setItem('token', response.data.token);
+        axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
+        return response.data.token;
+      }
+      throw new Error('No token received from server');
+    } catch (error) {
+      console.log("Error in update profile",error)
+
+    }
   }
 };
