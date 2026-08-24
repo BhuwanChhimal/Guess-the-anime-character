@@ -27,8 +27,8 @@ const Home = () => {
   };
 
   return (
-    <div className="bg-gradient-to-b from-gray-900 to-purple-900  min-h-[calc(100vh-10rem)]">
-      <div className="container mx-auto px-4 py-2 lg:p-8">
+    <div className="min-h-[calc(100vh-10rem)]">
+      <div className="container mx-auto px-4 py-4 lg:p-8">
         <div className="flex flex-col lg:flex-row gap-6">
           <div className="w-full lg:w-2/3 h-[calc(100vh-10rem)]">
             <Main onFeedbackUpdate={handleFeedbackUpdate} />
